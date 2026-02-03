@@ -1,0 +1,9 @@
+# Obsidian attachments
+Attachments/
+
+# OS / editor noise
+.DS_Store
+
+# Obsidian workspace settings (optional)
+.obsidian/workspace*
+.obsidian/cache/
