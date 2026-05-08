@@ -1,0 +1,651 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>数据库中期汇报界面 - 实验室设备预约系统</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #eef3ef;
+      --paper: #fefcf5;
+      --ink: #122030;
+      --muted: #4b5563;
+      --line: #d6d8d1;
+      --brand: #0f766e;
+      --brand-deep: #115e59;
+      --accent: #ca8a04;
+      --ok-bg: #dcfce7;
+      --ok-text: #166534;
+      --busy-bg: #fee2e2;
+      --busy-text: #991b1b;
+      --maint-bg: #ffedd5;
+      --maint-text: #9a3412;
+      --off-bg: #e5e7eb;
+      --off-text: #374151;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: "Noto Sans SC", "PingFang SC", "Hiragino Sans GB", sans-serif;
+      background:
+        radial-gradient(circle at 0% 0%, rgba(20, 184, 166, 0.16) 0 28%, transparent 52%),
+        radial-gradient(circle at 100% 0%, rgba(234, 179, 8, 0.16) 0 22%, transparent 50%),
+        linear-gradient(155deg, #ecf3f1 0%, #f9f9f3 44%, #eef4fb 100%);
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .frame {
+      max-width: 1320px;
+      margin: 0 auto;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      overflow: hidden;
+      background: color-mix(in srgb, var(--paper) 90%, white 10%);
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.14);
+    }
+
+    .topbar {
+      padding: 22px;
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(115deg, rgba(15, 118, 110, 0.11), rgba(202, 138, 4, 0.12));
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 18px;
+      align-items: end;
+    }
+
+    .pill {
+      display: inline-block;
+      padding: 5px 10px;
+      border-radius: 999px;
+      font: 600 12px/1 "Space Grotesk", sans-serif;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #134e4a;
+      background: #ccfbf1;
+      border: 1px solid #99f6e4;
+    }
+
+    h1 {
+      margin: 10px 0 8px;
+      font: 700 42px/1.05 "Space Grotesk", "Noto Sans SC", sans-serif;
+      letter-spacing: -0.02em;
+      color: #0f172a;
+    }
+
+    .subtitle {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .meta {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .meta-card {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #fff;
+      padding: 10px;
+    }
+
+    .meta-card .k {
+      color: #475569;
+      font-size: 12px;
+    }
+
+    .meta-card .v {
+      margin-top: 6px;
+      font: 700 17px/1.1 "Space Grotesk", "Noto Sans SC", sans-serif;
+      color: #0f172a;
+    }
+
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--line);
+      background: #fbfcf8;
+    }
+
+    .tab {
+      border: 1px solid #cbd5e1;
+      background: #fff;
+      border-radius: 999px;
+      padding: 8px 14px;
+      font-size: 14px;
+      cursor: pointer;
+      color: #334155;
+      transition: all .2s ease;
+    }
+
+    .tab:hover { transform: translateY(-1px); }
+
+    .tab.active {
+      background: var(--brand);
+      color: white;
+      border-color: var(--brand);
+      box-shadow: 0 4px 14px rgba(15, 118, 110, 0.3);
+    }
+
+    .content {
+      padding: 18px;
+    }
+
+    .panel {
+      display: none;
+      animation: fade .24s ease;
+    }
+
+    .panel.active { display: block; }
+
+    .grid2 {
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      gap: 14px;
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: #fff;
+      padding: 14px;
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 19px;
+      color: #0f172a;
+    }
+
+    .card p {
+      margin: 0;
+      color: #475569;
+      line-height: 1.7;
+      font-size: 14px;
+    }
+
+    .list {
+      margin: 10px 0 0;
+      padding-left: 18px;
+      color: #374151;
+      line-height: 1.75;
+      font-size: 14px;
+    }
+
+    .chip {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid #cbd5e1;
+      background: #f8fafc;
+      font-size: 12px;
+      margin: 4px 6px 0 0;
+      color: #334155;
+    }
+
+    .er {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .er-node {
+      border: 1px solid #cbd5e1;
+      border-radius: 12px;
+      padding: 10px;
+      background: #f8fbff;
+    }
+
+    .er-node h4 {
+      margin: 0 0 6px;
+      font-size: 14px;
+    }
+
+    .er-node p {
+      font-size: 12px;
+      color: #475569;
+      margin: 0;
+    }
+
+    .table-view {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+
+    .table-view th,
+    .table-view td {
+      border: 1px solid #dbe0d7;
+      padding: 8px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .table-view th {
+      background: #f8fafc;
+      color: #0f172a;
+    }
+
+    .rule-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .rule {
+      border: 1px solid #dbe1d2;
+      border-radius: 12px;
+      padding: 10px;
+      background: #fff;
+    }
+
+    .rule h4 {
+      margin: 0 0 8px;
+      font-size: 14px;
+    }
+
+    .rule p {
+      margin: 0;
+      font-size: 12px;
+      color: #475569;
+      line-height: 1.6;
+    }
+
+    .demo-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 10px 0 12px;
+    }
+
+    .filter {
+      border: 1px solid #cbd5e1;
+      border-radius: 999px;
+      padding: 7px 12px;
+      background: #fff;
+      font-size: 13px;
+      cursor: pointer;
+    }
+
+    .filter.active {
+      background: #0e7490;
+      border-color: #0e7490;
+      color: #fff;
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .metric {
+      border: 1px solid #dbe1d2;
+      border-radius: 12px;
+      background: #fff;
+      padding: 10px;
+    }
+
+    .metric .k { font-size: 12px; color: #475569; }
+    .metric .v { margin-top: 6px; font: 700 24px/1 "Space Grotesk", sans-serif; }
+
+    .device-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .device {
+      border: 1px solid #dbe1d2;
+      border-radius: 12px;
+      background: #fff;
+      padding: 10px;
+    }
+
+    .device .top {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .device .name {
+      font-size: 16px;
+      font-weight: 700;
+      margin: 0;
+    }
+
+    .device .info {
+      font-size: 12px;
+      color: #475569;
+      margin-top: 6px;
+      line-height: 1.6;
+    }
+
+    .badge {
+      font-size: 11px;
+      font-weight: 700;
+      border-radius: 999px;
+      padding: 5px 8px;
+      border: 1px solid transparent;
+      white-space: nowrap;
+    }
+
+    .ok { background: var(--ok-bg); color: var(--ok-text); border-color: #bbf7d0; }
+    .busy { background: var(--busy-bg); color: var(--busy-text); border-color: #fecaca; }
+    .maint { background: var(--maint-bg); color: var(--maint-text); border-color: #fed7aa; }
+    .off { background: var(--off-bg); color: var(--off-text); border-color: #d1d5db; }
+
+    .note {
+      margin-top: 12px;
+      border: 1px dashed #cdd4c9;
+      border-radius: 12px;
+      background: #fdfdf7;
+      padding: 10px;
+      font-size: 13px;
+      color: #475569;
+    }
+
+    @keyframes fade {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 1024px) {
+      .topbar { grid-template-columns: 1fr; }
+      .grid2 { grid-template-columns: 1fr; }
+      .rule-grid { grid-template-columns: 1fr; }
+      .device-grid { grid-template-columns: 1fr; }
+      .metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 620px) {
+      body { padding: 8px; }
+      h1 { font-size: 33px; }
+      .meta { grid-template-columns: 1fr; }
+      .tabs { padding: 10px; }
+      .content { padding: 10px; }
+      .metrics { grid-template-columns: 1fr 1fr; }
+      .er { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="frame">
+    <header class="topbar">
+      <div>
+        <span class="pill">Database Midterm Report UI</span>
+        <h1>实验室设备预约系统</h1>
+        <p class="subtitle">数据库系统概论中期汇报界面（按 PPT 讲述主线构建）</p>
+      </div>
+      <div class="meta">
+        <div class="meta-card">
+          <div class="k">汇报目标</div>
+          <div class="v">讲清设计逻辑</div>
+        </div>
+        <div class="meta-card">
+          <div class="k">DB 重点</div>
+          <div class="v">规则下沉</div>
+        </div>
+        <div class="meta-card">
+          <div class="k">时长控制</div>
+          <div class="v">3-4 分钟</div>
+        </div>
+      </div>
+    </header>
+
+    <nav class="tabs" id="tabs">
+      <button class="tab active" data-panel="p1">1. 背景与需求</button>
+      <button class="tab" data-panel="p2">2. E-R 设计</button>
+      <button class="tab" data-panel="p3">3. Schema 与 3NF</button>
+      <button class="tab" data-panel="p4">4. DB 层逻辑下沉</button>
+      <button class="tab" data-panel="p5">5. 前端展示（可截图）</button>
+    </nav>
+
+    <main class="content">
+      <section class="panel active" id="p1">
+        <div class="grid2">
+          <article class="card">
+            <h3>项目背景</h3>
+            <p>实验室预约场景中最常见的问题是：同设备时间冲突、用户资质不足、维护期间误预约。项目目标是把这些规则写进数据库层，让任何入口写数据都遵守同一套规则。</p>
+            <ul class="list">
+              <li>角色：普通用户（学生/老师）+ 管理员（实验员）</li>
+              <li>流程：查设备 -> 提交预约 -> 校验规则 -> 使用设备 -> 记录结果</li>
+              <li>重点：不依赖前端也能保证数据正确性</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>关键业务规则</h3>
+            <span class="chip">start_time &lt; end_time</span>
+            <span class="chip">同设备时间段不可重叠</span>
+            <span class="chip">维护设备不可预约</span>
+            <span class="chip">需资质设备必须校验</span>
+            <span class="chip">单用户有效预约上限 2 条</span>
+            <div class="note">一句话可讲：先定义业务规则，再落地到 E-R 和 Schema，最后由 DB 对规则进行强制执行。</div>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel" id="p2">
+        <div class="grid2">
+          <article class="card">
+            <h3>E-R 核心实体</h3>
+            <div class="er">
+              <div class="er-node"><h4>users</h4><p>用户信息与角色</p></div>
+              <div class="er-node"><h4>devices</h4><p>设备状态与资质要求</p></div>
+              <div class="er-node"><h4>reservations</h4><p>预约主记录</p></div>
+              <div class="er-node"><h4>labs</h4><p>实验室归属</p></div>
+              <div class="er-node"><h4>user_device_certifications</h4><p>用户-设备资质桥接</p></div>
+              <div class="er-node"><h4>maintenance_orders</h4><p>维护工单</p></div>
+              <div class="er-node"><h4>checkin_logs</h4><p>签到签退记录</p></div>
+              <div class="er-node"><h4>violation_records</h4><p>违约记录</p></div>
+            </div>
+          </article>
+          <article class="card">
+            <h3>关系基数与设计主线</h3>
+            <ul class="list">
+              <li><strong>lab 1:N devices</strong>：一个实验室管理多台设备</li>
+              <li><strong>user 1:N reservations</strong>：一个用户可发起多次预约</li>
+              <li><strong>device 1:N reservations</strong>：一台设备可对应多条预约记录</li>
+              <li><strong>user N:M device</strong>：通过资质表实现多对多关系</li>
+            </ul>
+            <div class="note">讲法建议：先讲主链路 users-devices-reservations，再讲规则增强模块（资质、维护、签到、违约）。</div>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel" id="p3">
+        <article class="card">
+          <h3>关系 Schema 与规范化说明（3NF）</h3>
+          <table class="table-view">
+            <thead>
+              <tr>
+                <th>表</th>
+                <th>主键 / 外键</th>
+                <th>核心约束</th>
+                <th>作用</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>users</td>
+                <td>PK: user_id</td>
+                <td>CHECK(role), UNIQUE(email)</td>
+                <td>用户主数据</td>
+              </tr>
+              <tr>
+                <td>devices</td>
+                <td>PK: device_id, FK: lab_id</td>
+                <td>CHECK(status), CHECK(requires_cert)</td>
+                <td>设备与状态</td>
+              </tr>
+              <tr>
+                <td>reservations</td>
+                <td>PK: reservation_id, FK: user_id/device_id</td>
+                <td>CHECK(status)</td>
+                <td>预约过程数据</td>
+              </tr>
+              <tr>
+                <td>maintenance_orders</td>
+                <td>PK: order_id, FK: device_id/created_by</td>
+                <td>CHECK(status)</td>
+                <td>维护流程</td>
+              </tr>
+              <tr>
+                <td>violation_records</td>
+                <td>PK: violation_id, FK: reservation_id/user_id</td>
+                <td>UNIQUE(reservation_id, violation_type)</td>
+                <td>违约追踪</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="note">3NF 解释：主数据与过程数据分离，非主属性不依赖其他非主属性，减少冗余与更新异常。</div>
+        </article>
+      </section>
+
+      <section class="panel" id="p4">
+        <article class="card">
+          <h3>DB 层逻辑下沉方式（对应 SQL 已实现）</h3>
+          <div class="rule-grid">
+            <div class="rule">
+              <h4>约束（CHECK / FK）</h4>
+              <p>负责底线合法性：状态枚举、字段值域、跨表引用正确，避免脏数据和孤儿数据。</p>
+            </div>
+            <div class="rule">
+              <h4>触发器（TRIGGER）</h4>
+              <p>负责流程规则：冲突校验、资质校验、维护冲突、no_show 自动记违约。</p>
+            </div>
+            <div class="rule">
+              <h4>视图（VIEW）</h4>
+              <p>负责查询口径统一：可用设备总览、用户预约统计、未来预约明细。</p>
+            </div>
+          </div>
+          <ul class="list">
+            <li>预约写入时：先校验时间合法，再检查冲突、资质、维护工单。</li>
+            <li>签到/签退后：触发器自动更新预约状态。</li>
+            <li>标记 no_show 后：自动写入违约记录，保证可追踪。</li>
+          </ul>
+          <div class="note">这页一句话总结：规则在数据库层被强制执行，任何入口写入都不能绕过。</div>
+        </article>
+      </section>
+
+      <section class="panel" id="p5">
+        <article class="card">
+          <h3>可用设备前端展示（用于截图）</h3>
+          <div class="metrics" id="metrics"></div>
+          <div class="demo-toolbar" id="filters"></div>
+          <div class="device-grid" id="deviceGrid"></div>
+          <div class="note">截图建议：优先截“统计卡片 + 设备列表”同屏，能直观体现“查询结果 + 状态分层”。</div>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    const tabs = document.querySelectorAll('.tab');
+    const panels = document.querySelectorAll('.panel');
+
+    tabs.forEach(btn => {
+      btn.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        panels.forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById(btn.dataset.panel).classList.add('active');
+      });
+    });
+
+    const devices = [
+      { id: 1, name: 'GPU 服务器 A100', type: 'server', lab: '计算机系统实验室', status: 'available', requiresCert: true, nextSlot: '今天 14:00-16:00 可预约' },
+      { id: 2, name: '高精度示波器', type: 'instrument', lab: '智能硬件实验室', status: 'maintenance', requiresCert: true, nextSlot: '维护中，预计明天 10:00 可用' },
+      { id: 3, name: '3D 打印机', type: 'printer', lab: '智能硬件实验室', status: 'available', requiresCert: false, nextSlot: '今天 15:00-18:00 可预约' },
+      { id: 4, name: '激光切割机', type: 'cutter', lab: '计算机系统实验室', status: 'offline', requiresCert: true, nextSlot: '离线检修中，待通知' },
+      { id: 5, name: '嵌入式调试台', type: 'embedded', lab: '智能硬件实验室', status: 'busy', requiresCert: false, nextSlot: '当前占用，17:30 后可预约' },
+      { id: 6, name: '视觉采集工作站', type: 'vision', lab: '人工智能实验室', status: 'available', requiresCert: true, nextSlot: '今天 13:30-17:00 可预约' }
+    ];
+
+    const statusMeta = {
+      available: { label: '可预约', cls: 'ok' },
+      busy: { label: '占用中', cls: 'busy' },
+      maintenance: { label: '维护中', cls: 'maint' },
+      offline: { label: '离线', cls: 'off' }
+    };
+
+    const labs = ['全部实验室', ...new Set(devices.map(d => d.lab))];
+    let activeLab = '全部实验室';
+
+    function filteredDevices() {
+      return activeLab === '全部实验室'
+        ? devices
+        : devices.filter(d => d.lab === activeLab);
+    }
+
+    function renderMetrics() {
+      const total = devices.length;
+      const available = devices.filter(d => d.status === 'available').length;
+      const maintenance = devices.filter(d => d.status === 'maintenance').length;
+      const cert = devices.filter(d => d.requiresCert).length;
+
+      const arr = [
+        ['设备总数', total],
+        ['当前可预约', available],
+        ['维护中', maintenance],
+        ['需资质设备', cert]
+      ];
+
+      document.getElementById('metrics').innerHTML = arr.map(([k, v]) => `
+        <div class="metric"><div class="k">${k}</div><div class="v">${v}</div></div>
+      `).join('');
+    }
+
+    function renderFilters() {
+      const root = document.getElementById('filters');
+      root.innerHTML = labs.map(l => `
+        <button class="filter ${l === activeLab ? 'active' : ''}" data-lab="${l}">${l}</button>
+      `).join('');
+
+      root.querySelectorAll('.filter').forEach(btn => {
+        btn.addEventListener('click', () => {
+          activeLab = btn.dataset.lab;
+          renderFilters();
+          renderDeviceGrid();
+        });
+      });
+    }
+
+    function renderDeviceGrid() {
+      const rows = filteredDevices();
+      document.getElementById('deviceGrid').innerHTML = rows.map(d => {
+        const m = statusMeta[d.status];
+        return `
+          <article class="device">
+            <div class="top">
+              <p class="name">${d.name}</p>
+              <span class="badge ${m.cls}">${m.label}</span>
+            </div>
+            <div class="info">编号 #${d.id} · ${d.lab} · 类型 ${d.type}</div>
+            <div class="info">资质要求：${d.requiresCert ? '需要' : '不需要'} ｜ ${d.nextSlot}</div>
+          </article>
+        `;
+      }).join('');
+    }
+
+    renderMetrics();
+    renderFilters();
+    renderDeviceGrid();
+  </script>
+</body>
+</html>

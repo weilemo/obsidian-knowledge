@@ -1,0 +1,10 @@
+1001,Zhang San,85.5
+1002,Li Si,92.0
+1003,Wang Wu,78.5
+1004,Zhao Liu,88.0
+1005,Qian Qi,95.5
+1006,Sun Ba,76.0
+1007,Zhou Jiu,89.5
+1008,Wu Shi,82.0
+1009,Zheng Shiyi,91.5
+1010,Feng Shier,79.0

@@ -1,0 +1,436 @@
+\begin{thebibliography}{10}
+
+\bibitem{yi2024survey}
+Zihao Yi, Jiarui Ouyang, Yuwen Liu, Tianhao Liao, Zhe Xu, and Ying Shen.
+\newblock A survey on recent advances in llm-based multi-turn dialogue systems.
+\newblock {\em arXiv preprint arXiv:2402.18013}, 2024.
+
+\bibitem{laban2023summedits}
+Philippe Laban, Wojciech Kry{\'s}ci{\'n}ski, Divyansh Agarwal,
+  Alexander~Richard Fabbri, Caiming Xiong, Shafiq Joty, and Chien-Sheng Wu.
+\newblock Summedits: measuring llm ability at factual reasoning through the
+  lens of summarization.
+\newblock In {\em Proceedings of the 2023 Conference on Empirical Methods in
+  Natural Language Processing}, pages 9662--9676, 2023.
+
+\bibitem{gu2023llm}
+Qiuhan Gu.
+\newblock Llm-based code generation method for golang compiler testing.
+\newblock In {\em Proceedings of the 31st ACM Joint European Software
+  Engineering Conference and Symposium on the Foundations of Software
+  Engineering}, pages 2201--2203, 2023.
+
+\bibitem{achiam2023gpt}
+Josh Achiam, Steven Adler, Sandhini Agarwal, Lama Ahmad, Ilge Akkaya,
+  Florencia~Leoni Aleman, Diogo Almeida, Janko Altenschmidt, Sam Altman,
+  Shyamal Anadkat, et~al.
+\newblock Gpt-4 technical report.
+\newblock {\em arXiv preprint arXiv:2303.08774}, 2023.
+
+\bibitem{anthropic2024claude}
+Anthropic.
+\newblock The claude 3 model family: Opus, sonnet, haiku, March 2024.
+\newblock Accessed: 2024-07-09.
+
+\bibitem{reid2024gemini}
+Machel Reid, Nikolay Savinov, Denis Teplyashin, Dmitry Lepikhin, Timothy
+  Lillicrap, Jean-baptiste Alayrac, Radu Soricut, Angeliki Lazaridou, Orhan
+  Firat, Julian Schrittwieser, et~al.
+\newblock Gemini 1.5: Unlocking multimodal understanding across millions of
+  tokens of context.
+\newblock {\em arXiv preprint arXiv:2403.05530}, 2024.
+
+\bibitem{FastGen}
+Suyu Ge, Yunan Zhang, Liyuan Liu, Minjia Zhang, Jiawei Han, and Jianfeng Gao.
+\newblock Model tells you what to discard: Adaptive kv cache compression for
+  llms.
+\newblock {\em arXiv preprint arXiv:2310.01801}, 2023.
+
+\bibitem{H2o}
+Zhenyu Zhang, Ying Sheng, Tianyi Zhou, Tianlong Chen, Lianmin Zheng, Ruisi Cai,
+  Zhao Song, Yuandong Tian, Christopher R{\'e}, Clark Barrett, et~al.
+\newblock H2o: Heavy-hitter oracle for efficient generative inference of large
+  language models.
+\newblock {\em Advances in Neural Information Processing Systems}, 36, 2024.
+
+\bibitem{PyramidInfer}
+Dongjie Yang, Xiaodong Han, Yan Gao, Yao Hu, Shilin Zhang, and Hai Zhao.
+\newblock {P}yramid{I}nfer: Pyramid {KV} cache compression for high-throughput
+  {LLM} inference.
+\newblock In Lun-Wei Ku, Andre Martins, and Vivek Srikumar, editors, {\em
+  Findings of the Association for Computational Linguistics ACL 2024}, pages
+  3258--3270, Bangkok, Thailand and virtual meeting, August 2024. Association
+  for Computational Linguistics.
+
+\bibitem{PyramidKV}
+Yichi Zhang, Bofei Gao, Tianyu Liu, Keming Lu, Wayne Xiong, Yue Dong, Baobao
+  Chang, Junjie Hu, Wen Xiao, et~al.
+\newblock Pyramidkv: Dynamic kv cache compression based on pyramidal
+  information funneling.
+\newblock {\em arXiv preprint arXiv:2406.02069}, 2024.
+
+\bibitem{SnapKV}
+Yuhong Li, Yingbing Huang, Bowen Yang, Bharat Venkitesh, Acyr Locatelli,
+  Hanchen Ye, Tianle Cai, Patrick Lewis, and Deming Chen.
+\newblock Snap{KV}: {LLM} knows what you are looking for before generation.
+\newblock In {\em The Thirty-eighth Annual Conference on Neural Information
+  Processing Systems}, 2024.
+
+\bibitem{kvpress}
+Maximilian~Jeblick Simon~Jegou.
+\newblock Llm kv cache compression made easy, 2024.
+
+\bibitem{wang2023catalyst}
+Kefei Wang and Feng Chen.
+\newblock Catalyst: Optimizing cache management for large in-memory key-value
+  systems.
+\newblock {\em Proceedings of the VLDB Endowment}, 16(13):4339--4352, 2023.
+
+\bibitem{beltagy2020longformer}
+Iz~Beltagy, Matthew~E Peters, and Arman Cohan.
+\newblock Longformer: The long-document transformer.
+\newblock {\em arXiv preprint arXiv:2004.05150}, 2020.
+
+\bibitem{han2024lminfinitezeroshotextremelength}
+Chi Han, Qifan Wang, Hao Peng, Wenhan Xiong, Yu~Chen, Heng Ji, and Sinong Wang.
+\newblock Lm-infinite: Zero-shot extreme length generalization for large
+  language models, 2024.
+
+\bibitem{SLM}
+Guangxuan Xiao, Yuandong Tian, Beidi Chen, Song Han, and Mike Lewis.
+\newblock Efficient streaming language models with attention sinks.
+\newblock {\em arXiv preprint arXiv:2309.17453}, 2023.
+
+\bibitem{liu2024scissorhands}
+Zichang Liu, Aditya Desai, Fangshuo Liao, Weitao Wang, Victor Xie, Zhaozhuo Xu,
+  Anastasios Kyrillidis, and Anshumali Shrivastava.
+\newblock Scissorhands: Exploiting the persistence of importance hypothesis for
+  llm kv cache compression at test time.
+\newblock {\em Advances in Neural Information Processing Systems}, 36, 2024.
+
+\bibitem{ren2024efficacy}
+Siyu Ren and Kenny~Q Zhu.
+\newblock On the efficacy of eviction policy for key-value constrained
+  generative language model inference.
+\newblock {\em arXiv preprint arXiv:2402.06262}, 2024.
+
+\bibitem{jiang2024minference}
+Huiqiang Jiang, Yucheng Li, Chengruidong Zhang, Qianhui Wu, Xufang Luo, Surin
+  Ahn, Zhenhua Han, Amir~H Abdi, Dongsheng Li, Chin-Yew Lin, et~al.
+\newblock Minference 1.0: Accelerating pre-filling for long-context llms via
+  dynamic sparse attention.
+\newblock {\em Advances in Neural Information Processing Systems},
+  37:52481--52515, 2024.
+
+\bibitem{li2025mminference}
+Yucheng Li, Huiqiang Jiang, Chengruidong Zhang, Qianhui Wu, Xufang Luo, Surin
+  Ahn, Amir~H Abdi, Dongsheng Li, Jianfeng Gao, Yuqing Yang, et~al.
+\newblock Mminference: Accelerating pre-filling for long-context vlms via
+  modality-aware permutation sparse attention.
+\newblock {\em arXiv preprint arXiv:2504.16083}, 2025.
+
+\bibitem{liu2024retrievalattention}
+Di~Liu, Meng Chen, Baotong Lu, Huiqiang Jiang, Zhenhua Han, Qianxi Zhang,
+  Qi~Chen, Chengruidong Zhang, Bailu Ding, Kai Zhang, et~al.
+\newblock Retrievalattention: Accelerating long-context llm inference via
+  vector retrieval.
+\newblock {\em arXiv preprint arXiv:2409.10516}, 2024.
+
+\bibitem{chen2024arkvale}
+Renze Chen, Zhuofeng Wang, Beiquan Cao, Tong Wu, Size Zheng, Xiuhong Li,
+  Xuechao Wei, Shengen Yan, Meng Li, and Yun Liang.
+\newblock Arkvale: Efficient generative llm inference with recallable key-value
+  eviction.
+\newblock {\em Advances in Neural Information Processing Systems},
+  37:113134--113155, 2024.
+
+\bibitem{zhang2025pqcache}
+Hailin Zhang, Xiaodong Ji, Yilin Chen, Fangcheng Fu, Xupeng Miao, Xiaonan Nie,
+  Weipeng Chen, and Bin Cui.
+\newblock Pqcache: Product quantization-based kvcache for long context llm
+  inference.
+\newblock {\em Proceedings of the ACM on Management of Data}, 3(3):1--30, 2025.
+
+\bibitem{sun2025breaking}
+He~Sun, Li~Li, Mingjun Xiao, and Chengzhong Xu.
+\newblock Breaking the boundaries of long-context llm inference: Adaptive kv
+  management on a single commodity gpu.
+\newblock {\em arXiv preprint arXiv:2506.20187}, 2025.
+
+\bibitem{liu2023dejavucontextualsparsity}
+Zichang Liu, Jue Wang, Tri Dao, Tianyi Zhou, Binhang Yuan, Zhao Song, Anshumali
+  Shrivastava, Ce~Zhang, Yuandong Tian, Christopher Re, and Beidi Chen.
+\newblock Deja vu: Contextual sparsity for efficient llms at inference time,
+  2023.
+
+\bibitem{dao2022flashattention}
+Tri Dao, Dan Fu, Stefano Ermon, Atri Rudra, and Christopher R{\'e}.
+\newblock Flashattention: Fast and memory-efficient exact attention with
+  io-awareness.
+\newblock {\em Advances in Neural Information Processing Systems},
+  35:16344--16359, 2022.
+
+\bibitem{dao2023flashattention}
+Tri Dao.
+\newblock Flashattention-2: Faster attention with better parallelism and work
+  partitioning.
+\newblock {\em arXiv preprint arXiv:2307.08691}, 2023.
+
+\bibitem{kwon2023efficient}
+Woosuk Kwon, Zhuohan Li, Siyuan Zhuang, Ying Sheng, Lianmin Zheng, Cody~Hao Yu,
+  Joseph Gonzalez, Hao Zhang, and Ion Stoica.
+\newblock Efficient memory management for large language model serving with
+  pagedattention.
+\newblock In {\em Proceedings of the 29th Symposium on Operating Systems
+  Principles}, pages 611--626, 2023.
+
+\bibitem{llama3}
+Aaron Grattafiori, Abhimanyu Dubey, and Abhinav~Jauhri .et al.
+\newblock The llama 3 herd of models, 2024.
+
+\bibitem{jiang2023mistral}
+Albert~Q Jiang, Alexandre Sablayrolles, Arthur Mensch, Chris Bamford,
+  Devendra~Singh Chaplot, Diego de~las Casas, Florian Bressand, Gianna Lengyel,
+  Guillaume Lample, Lucile Saulnier, et~al.
+\newblock Mistral 7b.
+\newblock {\em arXiv preprint arXiv:2310.06825}, 2023.
+
+\bibitem{GQA}
+Joshua Ainslie, James Lee-Thorp, Michiel de~Jong, Yury Zemlyanskiy, Federico
+  Lebrón, and Sumit Sanghai.
+\newblock Gqa: Training generalized multi-query transformer models from
+  multi-head checkpoints, 2023.
+
+\bibitem{hsieh2024ruler}
+Cheng-Ping Hsieh, Simeng Sun, Samuel Kriman, Shantanu Acharya, Dima Rekesh, Fei
+  Jia, Yang Zhang, and Boris Ginsburg.
+\newblock Ruler: What's the real context size of your long-context language
+  models?
+\newblock {\em arXiv preprint arXiv:2404.06654}, 2024.
+
+\bibitem{bai2023longbench}
+Yushi Bai, Xin Lv, Jiajie Zhang, Hongchang Lyu, Jiankai Tang, Zhidian Huang,
+  Zhengxiao Du, Xiao Liu, Aohan Zeng, Lei Hou, et~al.
+\newblock Longbench: A bilingual, multitask benchmark for long context
+  understanding.
+\newblock {\em arXiv preprint arXiv:2308.14508}, 2023.
+
+\bibitem{gim2024prompt}
+In~Gim, Guojun Chen, Seung-seob Lee, Nikhil Sarda, Anurag Khandelwal, and Lin
+  Zhong.
+\newblock Prompt cache: Modular attention reuse for low-latency inference.
+\newblock {\em Proceedings of Machine Learning and Systems}, 6:325--338, 2024.
+
+\bibitem{zheng2024sglang}
+Lianmin Zheng, Liangsheng Yin, Zhiqiang Xie, Chuyue Sun, Jeff Huang, Cody~Hao
+  Yu, Shiyi Cao, Christos Kozyrakis, Ion Stoica, Joseph~E Gonzalez, et~al.
+\newblock Sglang: Efficient execution of structured language model programs.
+\newblock {\em arXiv preprint arXiv:2312.07104}, 2024.
+
+\bibitem{kim2025kvzip}
+Jang-Hyun Kim, Jinuk Kim, Sangwoo Kwon, Jae~W Lee, Sangdoo Yun, and Hyun~Oh
+  Song.
+\newblock Kvzip: Query-agnostic kv cache compression with context
+  reconstruction.
+\newblock {\em arXiv preprint arXiv:2505.23416}, 2025.
+
+\bibitem{devoto2025expected}
+Alessio Devoto, Maximilian Jeblick, and Simon J{\'e}gou.
+\newblock Expected attention: Kv cache compression by estimating attention from
+  future queries distribution.
+\newblock {\em arXiv preprint arXiv:2510.00636}, 2025.
+
+\bibitem{galim2025draft}
+Kevin Galim, Ethan Ewer, Wonjun Kang, Minjae Lee, Hyung~Il Koo, and Kangwook
+  Lee.
+\newblock Draft-based approximate inference for llms.
+\newblock {\em arXiv preprint arXiv:2506.08373}, 2025.
+
+\bibitem{feng2025identify}
+Yuan Feng, Junlin Lv, Yukun Cao, Xike Xie, and S~Kevin Zhou.
+\newblock Identify critical kv cache in llm inference from an output
+  perturbation perspective.
+\newblock {\em arXiv preprint arXiv:2502.03805}, 2025.
+
+\bibitem{feng2025tamingfragilitykvcache}
+Yuan Feng, Haoyu Guo, JunLin Lv, S.~Kevin Zhou, and Xike Xie.
+\newblock Taming the fragility of kv cache eviction in llm inference, 2025.
+
+\bibitem{xiao2024duoattention}
+Guangxuan Xiao, Jiaming Tang, Jingwei Zuo, Junxian Guo, Shang Yang, Haotian
+  Tang, Yao Fu, and Song Han.
+\newblock Duoattention: Efficient long-context llm inference with retrieval and
+  streaming heads.
+\newblock {\em arXiv preprint arXiv:2410.10819}, 2024.
+
+\bibitem{fu2024not}
+Yu~Fu, Zefan Cai, Abedelkadir Asi, Wayne Xiong, Yue Dong, and Wen Xiao.
+\newblock Not all heads matter: A head-level kv cache compression method with
+  integrated retrieval and reasoning.
+\newblock {\em arXiv preprint arXiv:2410.19258}, 2024.
+
+\bibitem{yao2022zeroquant}
+Zhewei Yao, Reza Yazdani~Aminabadi, Minjia Zhang, Xiaoxia Wu, Conglong Li, and
+  Yuxiong He.
+\newblock Zeroquant: Efficient and affordable post-training quantization for
+  large-scale transformers.
+\newblock {\em Advances in Neural Information Processing Systems},
+  35:27168--27183, 2022.
+
+\bibitem{liu2024kivi}
+Zirui Liu, Jiayi Yuan, Hongye Jin, Shaochen Zhong, Zhaozhuo Xu, Vladimir
+  Braverman, Beidi Chen, and Xia Hu.
+\newblock Kivi: A tuning-free asymmetric 2bit quantization for kv cache.
+\newblock {\em arXiv preprint arXiv:2402.02750}, 2024.
+
+\bibitem{dong2024qaq}
+Shichen Dong, Wen Cheng, Jiayu Qin, and Wei Wang.
+\newblock Qaq: Quality adaptive quantization for llm kv cache.
+\newblock {\em arXiv preprint arXiv:2403.04643}, 2024.
+
+\bibitem{sun2024triforce}
+Hanshi Sun, Zhuoming Chen, Xinyu Yang, Yuandong Tian, and Beidi Chen.
+\newblock Triforce: Lossless acceleration of long sequence generation with
+  hierarchical speculative decoding.
+\newblock {\em arXiv preprint arXiv:2404.11912}, 2024.
+
+\bibitem{yanglongspec}
+Penghui Yang, Cunxiao Du, Fengzhuo Zhang, Haonan Wang, Tianyu Pang, Chao Du,
+  and Bo~An.
+\newblock Longspec: Long-context lossless speculative decoding with efficient
+  drafting and verification.
+\newblock In {\em ES-FoMo III: 3rd Workshop on Efficient Systems for Foundation
+  Models}.
+
+\bibitem{ji2025specvlm}
+Yicheng Ji, Jun Zhang, Heming Xia, Jinpeng Chen, Lidan Shou, Gang Chen, and
+  Huan Li.
+\newblock Specvlm: Enhancing speculative decoding of video llms via
+  verifier-guided token pruning.
+\newblock {\em arXiv preprint arXiv:2508.16201}, 2025.
+
+\bibitem{needle}
+Gregory Kamradt.
+\newblock {Needle In A Haystack} - pressure testing {LLM}s.
+\newblock {\em Github}, 2023.
+
+\bibitem{mqar}
+Simran Arora, Sabri Eyuboglu, Aman Timalsina, Isys Johnson, Michael Poli, James
+  Zou, Atri Rudra, and Christopher Ré.
+\newblock Zoology: Measuring and improving recall in efficient language models.
+\newblock In {\em ICLR}, 2024.
+
+\bibitem{kovcisky2018narrativeqa}
+Tom{\'a}{\v{s}} Ko{\v{c}}isk{\`y}, Jonathan Schwarz, Phil Blunsom, Chris Dyer,
+  Karl~Moritz Hermann, G{\'a}bor Melis, and Edward Grefenstette.
+\newblock The narrativeqa reading comprehension challenge.
+\newblock {\em Transactions of the Association for Computational Linguistics},
+  6:317--328, 2018.
+
+\bibitem{dasigi2021dataset}
+Pradeep Dasigi, Kyle Lo, Iz~Beltagy, Arman Cohan, Noah~A Smith, and Matt
+  Gardner.
+\newblock A dataset of information-seeking questions and answers anchored in
+  research papers.
+\newblock {\em arXiv preprint arXiv:2105.03011}, 2021.
+
+\bibitem{yang2018hotpotqa}
+Zhilin Yang, Peng Qi, Saizheng Zhang, Yoshua Bengio, William~W Cohen, Ruslan
+  Salakhutdinov, and Christopher~D Manning.
+\newblock Hotpotqa: A dataset for diverse, explainable multi-hop question
+  answering.
+\newblock {\em arXiv preprint arXiv:1809.09600}, 2018.
+
+\bibitem{ho-etal-2020-constructing}
+Xanh Ho, Anh-Khoa Duong~Nguyen, Saku Sugawara, and Akiko Aizawa.
+\newblock Constructing a multi-hop {QA} dataset for comprehensive evaluation of
+  reasoning steps.
+\newblock In Donia Scott, Nuria Bel, and Chengqing Zong, editors, {\em
+  Proceedings of the 28th International Conference on Computational
+  Linguistics}, pages 6609--6625, Barcelona, Spain (Online), December 2020.
+  International Committee on Computational Linguistics.
+
+\bibitem{trivedi2022musique}
+Harsh Trivedi, Niranjan Balasubramanian, Tushar Khot, and Ashish Sabharwal.
+\newblock Musique: Multihop questions via single-hop question composition.
+\newblock {\em Transactions of the Association for Computational Linguistics},
+  10:539--554, 2022.
+
+\bibitem{huang2021efficient}
+Luyang Huang, Shuyang Cao, Nikolaus Parulian, Heng Ji, and Lu~Wang.
+\newblock Efficient attentions for long document summarization.
+\newblock {\em arXiv preprint arXiv:2104.02112}, 2021.
+
+\bibitem{zhong2021qmsum}
+Ming Zhong, Da~Yin, Tao Yu, Ahmad Zaidi, Mutethia Mutuma, Rahul Jha,
+  Ahmed~Hassan Awadallah, Asli Celikyilmaz, Yang Liu, Xipeng Qiu, et~al.
+\newblock Qmsum: A new benchmark for query-based multi-domain meeting
+  summarization.
+\newblock {\em arXiv preprint arXiv:2104.05938}, 2021.
+
+\bibitem{fabbri2019multi}
+Alexander~R Fabbri, Irene Li, Tianwei She, Suyi Li, and Dragomir~R Radev.
+\newblock Multi-news: A large-scale multi-document summarization dataset and
+  abstractive hierarchical model.
+\newblock {\em arXiv preprint arXiv:1906.01749}, 2019.
+
+\bibitem{joshi2017triviaqalargescaledistantly}
+Mandar Joshi, Eunsol Choi, Daniel~S. Weld, and Luke Zettlemoyer.
+\newblock Triviaqa: A large scale distantly supervised challenge dataset for
+  reading comprehension, 2017.
+
+\bibitem{gliwa2019samsum}
+Bogdan Gliwa, Iwona Mochol, Maciej Biesek, and Aleksander Wawer.
+\newblock Samsum corpus: A human-annotated dialogue dataset for abstractive
+  summarization.
+\newblock {\em arXiv preprint arXiv:1911.12237}, 2019.
+
+\bibitem{li2002learning}
+Xin Li and Dan Roth.
+\newblock Learning question classifiers.
+\newblock In {\em COLING 2002: The 19th International Conference on
+  Computational Linguistics}, 2002.
+
+\bibitem{guo2023longcoderlongrangepretrainedlanguage}
+Daya Guo, Canwen Xu, Nan Duan, Jian Yin, and Julian McAuley.
+\newblock Longcoder: A long-range pre-trained language model for code
+  completion, 2023.
+
+\bibitem{liu2023repobenchbenchmarkingrepositorylevelcode}
+Tianyang Liu, Canwen Xu, and Julian McAuley.
+\newblock Repobench: Benchmarking repository-level code auto-completion
+  systems, 2023.
+
+\bibitem{liu2023lost}
+Nelson~F Liu, Kevin Lin, John Hewitt, Ashwin Paranjape, Michele Bevilacqua,
+  Fabio Petroni, and Percy Liang.
+\newblock Lost in the middle: How language models use long contexts.
+\newblock {\em arXiv preprint arXiv:2307.03172}, 2023.
+
+\bibitem{ho2020constructing}
+Xanh Ho, Anh-Khoa~Duong Nguyen, Saku Sugawara, and Akiko Aizawa.
+\newblock Constructing a multi-hop qa dataset for comprehensive evaluation of
+  reasoning steps.
+\newblock In {\em Proceedings of the 28th International Conference on
+  Computational Linguistics}, pages 6609--6625, 2020.
+
+\bibitem{joshi2017triviaqa}
+Mandar Joshi, Eunsol Choi, Daniel~S Weld, and Luke Zettlemoyer.
+\newblock Triviaqa: A large scale distantly supervised challenge dataset for
+  reading comprehension.
+\newblock In {\em Proceedings of the 55th Annual Meeting of the Association for
+  Computational Linguistics (Volume 1: Long Papers)}, pages 1601--1611, 2017.
+
+\bibitem{guo2023longcoder}
+Daya Guo, Canwen Xu, Nan Duan, Jian Yin, and Julian McAuley.
+\newblock Longcoder: A long-range pre-trained language model for code
+  completion.
+\newblock {\em arXiv preprint arXiv:2306.14893}, 2023.
+
+\bibitem{liu2023repobench}
+Tianyang Liu, Canwen Xu, and Julian McAuley.
+\newblock Repobench: Benchmarking repository-level code auto-completion
+  systems.
+\newblock {\em arXiv preprint arXiv:2306.03091}, 2023.
+
+\end{thebibliography}

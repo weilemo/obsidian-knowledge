@@ -1,0 +1,10 @@
+1005,Qian Qi,95.50
+1002,Li Si,92.00
+1009,Zheng Shiyi,91.50
+1007,Zhou Jiu,89.50
+1004,Zhao Liu,88.00
+1001,Zhang San,85.50
+1008,Wu Shi,82.00
+1010,Feng Shier,79.00
+1003,Wang Wu,78.50
+1006,Sun Ba,76.00

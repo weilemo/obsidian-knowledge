@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>实验室设备预约系统 - 可用设备总览</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f4f6ef;
+      --paper: #fffef7;
+      --ink: #1f2a37;
+      --muted: #4b5563;
+      --line: #d4d8cf;
+      --accent: #0e7490;
+      --accent-2: #f59e0b;
+      --ok-bg: #dcfce7;
+      --ok-text: #166534;
+      --busy-bg: #fee2e2;
+      --busy-text: #991b1b;
+      --maint-bg: #ffedd5;
+      --maint-text: #9a3412;
+      --off-bg: #e5e7eb;
+      --off-text: #374151;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      font-family: "Noto Sans SC", "PingFang SC", "Hiragino Sans GB", sans-serif;
+      background:
+        radial-gradient(circle at 10% 10%, #c7f9cc 0, rgba(199, 249, 204, 0.2) 35%, transparent 60%),
+        radial-gradient(circle at 95% 0%, #bfdbfe 0, rgba(191, 219, 254, 0.22) 30%, transparent 58%),
+        linear-gradient(145deg, #f5f7ef 0%, #fdf9f0 55%, #eef7ff 100%);
+      padding: 28px;
+    }
+
+    .shell {
+      max-width: 1180px;
+      margin: 0 auto;
+      background: color-mix(in srgb, var(--paper) 86%, white 14%);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      box-shadow: 0 12px 28px rgba(15, 23, 42, 0.1);
+      overflow: hidden;
+    }
+
+    .hero {
+      padding: 28px 28px 20px;
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(120deg, rgba(14, 116, 144, 0.08), rgba(245, 158, 11, 0.1));
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font: 600 12px/1 "Space Grotesk", "Noto Sans SC", sans-serif;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #115e59;
+      background: #ccfbf1;
+      border: 1px solid #99f6e4;
+      padding: 6px 10px;
+      border-radius: 999px;
+    }
+
+    h1 {
+      margin: 12px 0 8px;
+      font: 700 44px/1.06 "Space Grotesk", "Noto Sans SC", sans-serif;
+      letter-spacing: -0.02em;
+      color: #0f172a;
+    }
+
+    .sub {
+      margin: 0;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      padding: 18px 22px 8px;
+    }
+
+    .metric {
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 14px;
+      background: white;
+      animation: rise .46s ease both;
+    }
+
+    .metric h3 {
+      margin: 0;
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .metric .value {
+      margin-top: 8px;
+      font: 700 30px/1 "Space Grotesk", sans-serif;
+    }
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 8px 22px 0;
+    }
+
+    .chip {
+      border: 1px solid #cbd5e1;
+      border-radius: 999px;
+      background: #ffffff;
+      color: #334155;
+      padding: 8px 14px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all .2s ease;
+    }
+
+    .chip:hover { transform: translateY(-1px); }
+
+    .chip.active {
+      background: #0e7490;
+      border-color: #0e7490;
+      color: white;
+      box-shadow: 0 4px 12px rgba(14, 116, 144, 0.24);
+    }
+
+    .list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      padding: 16px 22px 24px;
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: white;
+      padding: 14px;
+      animation: rise .48s ease both;
+    }
+
+    .row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .name {
+      margin: 0;
+      font-size: 20px;
+      line-height: 1.2;
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    .meta {
+      margin: 8px 0 0;
+      color: #475569;
+      font-size: 14px;
+    }
+
+    .badge {
+      font-size: 12px;
+      font-weight: 700;
+      border-radius: 999px;
+      padding: 6px 10px;
+      border: 1px solid transparent;
+      white-space: nowrap;
+    }
+
+    .ok { background: var(--ok-bg); color: var(--ok-text); border-color: #bbf7d0; }
+    .busy { background: var(--busy-bg); color: var(--busy-text); border-color: #fecaca; }
+    .maint { background: var(--maint-bg); color: var(--maint-text); border-color: #fed7aa; }
+    .off { background: var(--off-bg); color: var(--off-text); border-color: #d1d5db; }
+
+    .foot {
+      padding: 0 22px 22px;
+      color: #64748b;
+      font-size: 13px;
+    }
+
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 960px) {
+      .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .list { grid-template-columns: 1fr; }
+      h1 { font-size: 34px; }
+    }
+
+    @media (max-width: 560px) {
+      body { padding: 10px; }
+      .hero { padding: 20px 16px 16px; }
+      .grid, .filters, .list, .foot { padding-left: 14px; padding-right: 14px; }
+      .grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+      .metric .value { font-size: 24px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header class="hero">
+      <span class="eyebrow">Database Demo UI</span>
+      <h1>可用设备情况总览</h1>
+      <p class="sub">实验室设备预约系统</p>
+    </header>
+
+    <section class="grid" id="metricGrid"></section>
+    <section class="filters" id="filters"></section>
+    <section class="list" id="deviceList"></section>
+    <p class="foot">数据说明：示例展示页，用于体现“可用设备查询 + 状态分层 + 规则可解释性”。</p>
+  </main>
+
+  <script>
+    const devices = [
+      { id: 1, name: 'GPU 服务器 A100', type: 'server', lab: '计算机系统实验室', status: 'available', requiresCert: true, nextSlot: '今天 14:00-16:00 可预约' },
+      { id: 2, name: '高精度示波器', type: 'instrument', lab: '智能硬件实验室', status: 'maintenance', requiresCert: true, nextSlot: '维护中，预计明天 10:00 可用' },
+      { id: 3, name: '3D 打印机', type: 'printer', lab: '智能硬件实验室', status: 'available', requiresCert: false, nextSlot: '今天 15:00-18:00 可预约' },
+      { id: 4, name: '激光切割机', type: 'cutter', lab: '计算机系统实验室', status: 'offline', requiresCert: true, nextSlot: '离线检修中，待通知' },
+      { id: 5, name: '嵌入式调试台', type: 'embedded', lab: '智能硬件实验室', status: 'busy', requiresCert: false, nextSlot: '当前占用，17:30 后可预约' },
+      { id: 6, name: '视觉采集工作站', type: 'vision', lab: '人工智能实验室', status: 'available', requiresCert: true, nextSlot: '今天 13:30-17:00 可预约' }
+    ];
+
+    const statusMeta = {
+      available: { label: '可预约', className: 'ok' },
+      busy: { label: '占用中', className: 'busy' },
+      maintenance: { label: '维护中', className: 'maint' },
+      offline: { label: '离线', className: 'off' }
+    };
+
+    const labOptions = ['全部实验室', ...new Set(devices.map(d => d.lab))];
+    let activeLab = '全部实验室';
+
+    function getFiltered() {
+      return activeLab === '全部实验室' ? devices : devices.filter(d => d.lab === activeLab);
+    }
+
+    function renderMetrics() {
+      const total = devices.length;
+      const available = devices.filter(d => d.status === 'available').length;
+      const maintenance = devices.filter(d => d.status === 'maintenance').length;
+      const certRequired = devices.filter(d => d.requiresCert).length;
+
+      const metrics = [
+        ['设备总数', total],
+        ['当前可预约', available],
+        ['维护中', maintenance],
+        ['需资质设备', certRequired]
+      ];
+
+      const grid = document.getElementById('metricGrid');
+      grid.innerHTML = metrics
+        .map(([title, value], idx) => `
+          <article class="metric" style="animation-delay:${idx * 70}ms">
+            <h3>${title}</h3>
+            <div class="value">${value}</div>
+          </article>`)
+        .join('');
+    }
+
+    function renderFilters() {
+      const container = document.getElementById('filters');
+      container.innerHTML = labOptions
+        .map(lab => `
+          <button class="chip ${lab === activeLab ? 'active' : ''}" data-lab="${lab}">${lab}</button>
+        `)
+        .join('');
+
+      container.querySelectorAll('.chip').forEach(btn => {
+        btn.addEventListener('click', () => {
+          activeLab = btn.dataset.lab;
+          renderFilters();
+          renderList();
+        });
+      });
+    }
+
+    function renderList() {
+      const list = document.getElementById('deviceList');
+      const rows = getFiltered();
+
+      list.innerHTML = rows.map((d, idx) => {
+        const meta = statusMeta[d.status];
+        return `
+          <article class="card" style="animation-delay:${idx * 60}ms">
+            <div class="row">
+              <h3 class="name">${d.name}</h3>
+              <span class="badge ${meta.className}">${meta.label}</span>
+            </div>
+            <p class="meta">编号 #${d.id} · ${d.lab} · 类型 ${d.type}</p>
+            <p class="meta">资质要求：${d.requiresCert ? '需要' : '不需要'} ｜ ${d.nextSlot}</p>
+          </article>
+        `;
+      }).join('');
+    }
+
+    renderMetrics();
+    renderFilters();
+    renderList();
+  </script>
+</body>
+</html>

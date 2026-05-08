@@ -1,0 +1,21 @@
+\section{Related Works}
+
+\subsection{Cache Eviction Methods}
+
+In the long-sequence inference, the vast scale of the KV cache elements leads to a memory-bound situation, causing significant memory burden and I/O latency~\cite{wang2023catalyst}.
+Numerous studies have sought to mitigate by reducing the cache size, notably through the eviction of non-critical cache elements\footnote{For additional related works, see Appendix \ref{apdx:additional_related}}.
+These  methods are primarily divided into two categories: \textit{sliding window eviction} and \textit{Top-k eviction} methods.
+The sliding window eviction methods~\cite{beltagy2020longformer,han2024lminfinitezeroshotextremelength,SLM}, exemplified by \textit{StreamingLLM}~\cite{SLM}, simply retain several initial cache elements and those within a sliding window, while evicting others. However, the undiscriminating sliding eviction of cache elements results in a significant reduction in generation quality.
+In contrast, Top-k eviction methods~\cite{FastGen,liu2024scissorhands,ren2024efficacy,H2o,PyramidInfer,PyramidKV,SnapKV} identify and retain a selected set of $k$ critical cache elements based on attention weights, for enhancing the post-eviction generation quality.
+The adaptive budget allocation presented in this paper, tailored for Top-$k$ Eviction Methods, enhances post-eviction generation quality within the same overall budget.
+	
+
+In the study of Top-$k$ eviction methods, early work like FastGen~\cite{FastGen} searches and combines multiple strategies, such as maintaining caches of special elements, punctuation elements, recent elements, and Top-$k$ selected elements, based on the characteristics of attention heads.
+H2O, as the representation~\cite{H2o,liu2024scissorhands,ren2024efficacy}, develops a Top-$k$ based eviction scheme that leverages the query states of all tokens to identify critical cache elements.
+However, under unidirectional mask in LLM computations, aggregating attention weights across all query states often causes recent KV cache elements to be mistakenly evicted, degrading the quality of subsequent generations. 
+Recent works, such as SnapKV~\cite{SnapKV} address this issue by using query states within an observation window to identify critical elements, thereby achieving SOTA performance. Subsequent methods, such as Pyramid~\cite{PyramidInfer,PyramidKV}, further introduce budget allocation across different layers.
+However, existing Top-$k$ eviction methods typically assign the overall budget uniformly across different heads.
+In contrast, Ada-KV, which has demonstrated superior theoretical and empirical results through adaptive budget allocation, provides a novel strategy to optimizing these methods.
+
+\subsection{Sparse Attention Methods}
+Sparse attention methods are conceptually related to KV cache eviction, but differ fundamentally in their approach~\cite{jiang2024minference,li2025mminference,liu2024retrievalattention,chen2024arkvale,zhang2025pqcache,sun2025breaking}. The key difference is that KV cache eviction retains only a subset of the KV cache, while sparse attention methods keep all entries but selectively utilize only a critical subset during computation. Consequently, sparse attention methods do not reduce the memory footprint of the KV cache, thus often necessitating cache offloading to CPU memory~\cite{liu2024retrievalattention,chen2024arkvale,zhang2025pqcache} or even disk storage~\cite{sun2025breaking}. Additionally, the two technique lines are, in fact, orthogonal. Future research could explore first employing KV cache eviction to compress the cache to a certain proportion and then applying sparse attention for further acceleration. Ada-KV presented in this paper leverages head-wise adaptive allocation to enhance cache eviction methods, and this approach can similarly be applied in future work to enhance dynamic sparse attention methods.

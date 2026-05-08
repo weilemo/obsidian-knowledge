@@ -7,3 +7,9 @@ Attachments/
 # Obsidian workspace settings (optional)
 .obsidian/workspace*
 .obsidian/cache/
+
+
+
+
+# Ignore Smart Environment folder
+.smart-env

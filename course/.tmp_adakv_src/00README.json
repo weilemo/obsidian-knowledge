@@ -1,0 +1,29 @@
+{
+   "sources" : [
+      {
+         "usage" : "toplevel",
+         "filename" : "neurips_adakv.tex"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "Figures/LWM_longbench_score.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "Figures/bound_gap_three_layers.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "icml25.bib"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "neurips_adakv.out"
+      }
+   ],
+   "spec_version" : 1,
+   "texlive_version" : "2023",
+   "process" : {
+      "compiler" : "pdflatex"
+   }
+}

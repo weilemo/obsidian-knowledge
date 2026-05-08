@@ -1,6 +1,12 @@
 [
   "obsidian-importer",
-  "templater-obsidian",
   "dataview",
-  "obsidian-excalidraw-plugin"
+  "templater-obsidian",
+  "obsidian-excalidraw-plugin",
+  "obsidian-zotero-desktop-connector",
+  "obsidian-latex-suite",
+  "pdf-plus",
+  "smart-connections",
+  "execute-code",
+  "table-editor-obsidian"
 ]

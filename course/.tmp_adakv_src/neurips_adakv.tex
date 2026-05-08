@@ -1,0 +1,99 @@
+\documentclass{article}
+
+
+\usepackage[final]{neurips_2025}
+
+
+
+
+
+\usepackage[utf8]{inputenc} % allow utf-8 input
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+\usepackage{hyperref}       % hyperlinks
+\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{amsfonts}       % blackboard math symbols
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{microtype}      % microtypography
+\usepackage{xcolor}         % colors
+
+
+%custom package
+
+\usepackage{comment}
+\usepackage{subcaption}
+\usepackage{graphicx}
+%\usepackage[table]{xcolor}
+\usepackage{multirow}
+\usepackage{makecell}
+\usepackage{amsmath}  
+\usepackage{amsthm}  
+\usepackage{algorithm}  
+\usepackage{algorithmic}  
+\usepackage{array}  
+\usepackage{wrapfig}
+\usepackage{placeins}
+
+\usepackage{authblk}
+
+
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{assumption}[theorem]{Assumption}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+
+\title{Ada-KV: Optimizing KV Cache Eviction by Adaptive Budget Allocation for Efficient LLM Inference}
+
+
+
+
+\author{ 
+\textbf{Yuan Feng}\textsuperscript{1,3{$\dagger$}}
+\textbf{Junlin Lv}\textsuperscript{1,3{$\dagger$}}
+\textbf{Yukun Cao}\textsuperscript{1,3}
+\textbf{Xike Xie}\textsuperscript{2,3{*}}
+\textbf{S. Kevin Zhou}\textsuperscript{2,3}
+}
+
+\affil{
+    \textsuperscript{1}School of Computer Science, University of Science and Technology of China (USTC) \\
+    \textsuperscript{2}School of Biomedical Engineering, USTC \\
+    \textsuperscript{3}Data Darkness Lab, MIRACLE Center, Suzhou Institute for Advanced Research \\
+}
+
+
+
+\begin{document}
+\maketitle
+	
+\def\thefootnote{}\footnotetext{\textsuperscript{$\dagger$}Equal Contribution, \textsuperscript{*}Corresponding Author: Xike Xie(xkxie@ustc.edu.cn)} \def\thefootnote{\arabic{footnote}}
+
+
+\input{SubFiles/abstract.tex}
+\input{SubFiles/intro.tex}
+\input{SubFiles/related.tex}
+\input{SubFiles/method.tex}
+\input{SubFiles/exp.tex}
+\input{SubFiles/conclusion.tex}
+
+\bibliographystyle{unsrt}
+\bibliography{icml25}
+
+
+
+\newpage
+\onecolumn
+\appendix
+\input{SubFiles/appendix.tex}
+
+\end{document}

@@ -1,0 +1,12 @@
+\section{Conclusion}
+
+
+In this study, we revisit cache eviction strategies for efficient LLM inference and uncover a key overlooked factor: adaptive budget allocation across attention heads. Guided by a theoretical analysis of the loss upper bound, we propose \textit{Ada-KV}, the first adaptive budget allocation strategy for optimizing KV cache eviction methods. 
+To demonstrate its plug-and-play benefits, we seamlessly integrate Ada-KV into two existing SOTA methods, introducing Ada-SnapKV and Ada-Pyramid, two adaptive eviction methods.
+Beyond the commonly studied question-aware compression, we also evaluate these methods in the more challenging and less explored question-agnostic compression scenario. Using the Ruler and LongBench benchmarks, we demonstrate the effectiveness of adaptive budget allocation in both settings. Our results not only expose the limitations of current cache eviction strategies but also highlight the potential of adaptive allocation to enhance cache eviction.
+
+
+\section*{Acknowledgments}
+We would like to thank the anonymous reviewers for their valuable feedback and constructive comments. 
+This work was supported by the National Natural Science Foundation of China (NSFC) under Grants 62472400 and 62271465, the National Key R\&D Program of China under Grant 2025YFC3408300, and the Suzhou Basic Research Program under Grant SYG202338.
+
