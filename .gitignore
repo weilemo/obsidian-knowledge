@@ -13,3 +13,9 @@ Attachments/
 
 # Ignore Smart Environment folder
 .smart-env
+
+# Local work materials
+Work/
+
+# Local private Claude Code notes
+AI Engineer/Agent/Claudecode/
