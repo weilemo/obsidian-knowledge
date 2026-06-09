@@ -34,4 +34,4 @@ tags: [dankoe, self-management]
 - 
 
 ## Related notes
-- [[self-management/dankoe-methodology/00-index/00-core-concepts-index]]
+- [[00-core-concepts-index]]

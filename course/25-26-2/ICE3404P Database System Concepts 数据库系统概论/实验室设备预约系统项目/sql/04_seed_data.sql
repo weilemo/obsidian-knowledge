@@ -25,20 +25,20 @@ INSERT INTO user_device_certifications (cert_id, user_id, device_id, cert_level,
 (2, 2, 2, 'B', '2026-01-01 00:00:00', '2026-12-31 23:59:59'),
 (3, 4, 2, 'A', '2026-01-01 00:00:00', '2026-12-31 23:59:59');
 
--- 预约
+-- 预约：保留 2026-06 的未来样例，保证期末展示时 vw_upcoming_reservations 有输出。
 INSERT INTO reservations (reservation_id, user_id, device_id, start_time, end_time, status, purpose) VALUES
-(1, 2, 1, '2026-04-01 09:00:00', '2026-04-01 11:00:00', 'approved', '深度学习训练实验'),
-(2, 3, 3, '2026-04-01 13:00:00', '2026-04-01 15:00:00', 'pending',  '课程作业原型打印'),
-(3, 2, 1, '2026-03-10 09:00:00', '2026-03-10 10:00:00', 'completed', '历史实验记录'),
-(4, 3, 3, '2026-03-11 10:00:00', '2026-03-11 12:00:00', 'approved',  '历史实验记录');
+(1, 2, 1, '2026-06-03 09:00:00', '2026-06-03 11:00:00', 'approved', '深度学习训练实验'),
+(2, 3, 3, '2026-06-03 13:00:00', '2026-06-03 15:00:00', 'pending',  '课程作业原型打印'),
+(3, 2, 1, '2026-05-10 09:00:00', '2026-05-10 10:00:00', 'completed', '历史实验记录'),
+(4, 3, 3, '2026-05-11 10:00:00', '2026-05-11 12:00:00', 'approved',  '历史实验记录');
 
 -- 签到签退
 INSERT INTO checkin_logs (checkin_id, reservation_id, checkin_time, checkout_time, result) VALUES
-(1, 3, '2026-03-10 08:58:00', '2026-03-10 10:01:00', 'on_time');
+(1, 3, '2026-05-10 08:58:00', '2026-05-10 10:01:00', 'on_time');
 
 -- 维护工单：会自动把设备 2 状态改成 maintenance
 INSERT INTO maintenance_orders (order_id, device_id, created_by, start_time, end_time, status, note) VALUES
-(1, 2, 1, '2026-04-02 13:00:00', '2026-04-02 17:00:00', 'open', '例行校准');
+(1, 2, 1, '2026-06-04 13:00:00', '2026-06-04 17:00:00', 'open', '例行校准');
 
 -- 演示 no_show 违约触发
 UPDATE reservations

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="language" content="english">
+  <title>Project 3 | CS61C Spring 2026</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light dark">
+
+  <link rel="shortcut icon" type="image/png" href="/sp26/img/favicon.png">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css" integrity="sha512-GQGU0fMMi238uA+a/bdWJfpUGKUkBdgfFdgBm72SUQ6BeyWjoY/ton0tEjH+OSH9iP4Dfh+7HM0I9f5eR0L/4w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/js/bootstrap.min.js" integrity="sha512-OvBgP9A2JBgiRad/mM36mkzXSXaJE9BEIENnVEmeZdITvwT09xnxLtT4twkCa8m/loMbPHsvPl0T8lRGVBwjlQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/instant.page/5.1.0/instantpage.min.js" integrity="sha512-1+qUtKoh9XZW7j+6LhRMAyOrgSQKenQ4mluTR+cvxXjP1Z54RxZuzstR/H9kgPXQsVB8IW7DMDFUJpzLjvhGSQ==" crossorigin="anonymous"></script>
+
+
+  <link rel="stylesheet" href="/sp26/css/main.css?h=f8bd781ba155b1b368c870416f8523be84e7ec2bcec8d335573a0c95c849e327" />
+  <script defer type="text/javascript" src="/sp26/js/main.js?h=ad997e2a23022756f6ea00b8b4e23a4ee1a56495d9f493dcb7b75cae0dc3465f"></script>
+
+  <!-- block for FICT/FaRT -->
+  <script type="text/javascript" src="/sp26/js/main-sync.js?h=a5a9607bf30db01764e4c92a4d4832318d20ec7d3ec29af4ddf72b7ddcb13817"></script>
+  <script>initDarkToggle();</script>
+
+  
+
+
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.17.0/tocbot.min.js" integrity="sha512-DJhUMo5TIBb3fFziiE+3OJG+j7ky+GxScxHdLADCXskEpc/AKQsbsorIYmGFJFaJvDIyP65rJNhnCTytfYAdUw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark mb-4">
+  <div class="container">
+    <a class="navbar-brand" href="/sp26/">
+      <img class="d-inline-block me-2 rounded" height="48" width="48" src="/sp26/img/icon-small.png" alt="outline of square computer chip with cs61c label" />
+      <span class="align-middle">CS61C Spring 2026</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle Navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="/sp26/calendar/">Calendar</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/sp26/exam/">Exam</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/sp26/policies/">Policies</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://edstem.org/us/courses/93340/">Ed</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarLinksDropdownToggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Quick Links</a>
+          <ul class="dropdown-menu p-0" aria-labelledby="navbarLinksDropdownToggle">
+            <li><a class="dropdown-item nav-link" href="https://flextensions.berkeley.edu/">Request an Extension</a></li>
+            <li><a class="dropdown-item nav-link" href="https://oh.cs61c.org/">OH Queue</a></li>
+            <li><a class="dropdown-item nav-link" href="https://venus.cs61c.org/">Venus</a></li>
+            <li><a class="dropdown-item nav-link" href="https://calendar.app.google/usQAgWHiiLPBH7hi6">Student Support Meeting</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarLinksDropdownToggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Resources</a>
+          <ul class="dropdown-menu p-0" aria-labelledby="navbarLinksDropdownToggle">
+            <li><a class="dropdown-item nav-link" href="/sp26/resources/common-errors/">Common Errors</a></li>
+            <li><a class="dropdown-item nav-link" href="https://notes.cs61c.org/">Course Notes</a></li>
+            <li><a class="dropdown-item nav-link" href="/sp26/pdfs/resources/reference-card.pdf">Reference Card</a></li>
+            <li><a class="dropdown-item nav-link" href="/sp26/resources/">Resource Index</a></li>
+            <li><a class="dropdown-item nav-link" href="/sp26/resources/exams/">Past Exams</a></li>
+            <li><a class="dropdown-item nav-link" href="https://inst.eecs.berkeley.edu/~cs61c/archives.html">Past Semesters</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/sp26/staff/">Staff</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+  <main class="mb-4">
+    <section class="section">
+      <div class="container">
+        
+
+		
+
+        
+
+  
+
+<div class="row spec">
+  <nav class="col-md-3 d-print-none sticky-md-top nav-wrapper" aria-label="table of contents">
+    
+  
+  
+    
+  
+  <ul class="nav flex-column">
+    <li class="nav-item">
+      <a class="nav-link" href="/sp26/projects/proj3/">Project 3: CS61CPU</a>
+      
+        <div id="toc-wrapper">
+          
+  <ul class="nav flex-column">
+    
+      <li class="nav-item">
+        <a class="nav-link" href="/sp26/projects/proj3/#setup">Setup</a>
+        
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-link" href="/sp26/projects/proj3/#restoring-starter-files">Restoring Starter Files</a>
+        
+      </li>
+    
+  </ul>
+
+        </div>
+      
+    </li>
+    
+      
+  <li class="nav-item">
+    <a class="nav-link" href="/sp26/projects/proj3/part-a/">Part A</a>
+    
+  </li>
+
+    
+      
+  <li class="nav-item">
+    <a class="nav-link" href="/sp26/projects/proj3/part-b/">Part B</a>
+    
+  </li>
+
+    
+      
+  <li class="nav-item">
+    <a class="nav-link" href="/sp26/projects/proj3/testing/">Testing and Debugging</a>
+    
+  </li>
+
+    
+    
+  </ul>
+
+  </nav>
+  <div id="toc-content-wrapper" class="content col-md-9">
+    <h1>Project 3: CS61CPU</h1>
+    
+      <p class="subtitle">Part A Deadline: Friday, March 20, 11:59:59 PM PT</p>
+      <p class="subtitle">Part B Deadline: Thursday, April 9, 11:59:59 PM PT</p>
+    
+    
+    <p>In this project, you will be building a CPU that runs actual RISC-V instructions.</p>
+<h2 id="setup">Setup</h2>
+<div  class="alert alert-warning">
+  <p>You must complete this lab on your local machine. See <a href="/sp26/labs/lab00/">Lab 0</a> if you need to set up your local machine again.</p>
+<p><strong>For common errors with Logisim or Project 3-specific errors, please look at the <a href="/sp26/resources/common-errors/">common errors</a> page.</strong></p>
+
+</div>
+<h3 id="setup-git">Setup: Git</h3>
+<p>This assignment can be done alone or with a partner.</p>
+<div  class="alert alert-warning">
+  <p><strong>Warning</strong>: Once you create a group on Gradar, you will <em>not</em> be able to change (add, remove, or swap) partners for this project (both Project 3A and 3B), so please be sure of your partner before starting the project. You must add your partner on both Gradar and to every Gradescope submission.</p>
+
+</div>
+<p>If there are extenuating circumstances that require a partner switch (e.g. your partner drops the class, your partner is unresponsive), please reach out to us privately.</p>
+<ol>
+<li>
+<p><strong>Visit</strong> <a href="https://gradar.cs61c.org/">Gradar</a>. <strong>Log in</strong> and <strong>register</strong> your Project 3 group (and <strong>add</strong> your partner, if you have one), then <strong>create</strong> a GitHub repo for you or your group. If you have a partner, one partner should create a group and invite the other partner to that repo. The other partner should accept the invite without creating their own group.</p>
+</li>
+<li>
+<p><strong>Clone</strong> the repository on your workspace. Please use your <strong>local machine</strong> (you don't need the hive machine at all for this project). Windows users should clone outside WSL (Git Bash is recommended).</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">git</span></span><span class="z-meta z-function-call z-arguments z-shell"> clone git@github.com:61c-student/sp26-proj3-USERNAME.git 61c-proj3</span>
+</span></code></pre>
+<p>(<strong>replace</strong> <code>USERNAME</code> with your GitHub username)</p>
+</li>
+<li>
+<p><strong>Navigate</strong> to your repository:</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-support z-function z-cd z-shell">cd</span></span><span class="z-meta z-function-call z-arguments z-shell"> 61c-proj3</span>
+</span></code></pre>
+</li>
+<li>
+<p><strong>Add the starter repo</strong> as a remote:</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">git</span></span><span class="z-meta z-function-call z-arguments z-shell"> remote add starter https://github.com/61c-teach/sp26-proj3-starter.git</span>
+</span></code></pre>
+</li>
+</ol>
+<p>If you run into <code>git</code> issues, please check out the <a href="/sp26/resources/common-errors/">common errors</a> page.</p>
+<h3 id="setup-logisim">Setup: Logisim</h3>
+<p>This project is done in Logisim. In the <code>61c-proj3</code> directory, <strong>run <code>bash test.sh download_tools</code></strong> to download Venus and Logisim for this project. (You only need to run this once.)</p>
+<p>For the rest of the project, to open Logisim, <strong>run <code>java -jar tools/logisim-evolution.jar</code></strong>.</p>
+<h2 id="restoring-starter-files">Restoring Starter Files</h2>
+<p>To restore starter files, please check out the <a href="/sp26/resources/common-errors/">common errors</a> page.</p>
+
+  </div>
+</div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer>
+  <div class="container border-top pt-4 mb-5">
+    <div class="row">
+      <div class="col">
+        <div id="dark-toggle-wrapper" class="d-none">
+          <div class="form-check form-switch">
+            <input id="inputDarkToggle" class="form-check-input" type="checkbox">
+            <label class="form-check-label" for="inputDarkToggle">
+              Dark Mode
+              <a id="buttonDarkToggleReset" class="d-none" href="javascript:void(0);">(reset)</a>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  
+<script>
+  
+
+  document.addEventListener("DOMContentLoaded", function() {
+    initToC();
+  });
+</script>
+
+</body>
+
+</html>

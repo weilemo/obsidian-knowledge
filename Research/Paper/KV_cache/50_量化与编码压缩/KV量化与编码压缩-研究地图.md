@@ -42,7 +42,7 @@ $$
 如果你想先理解“为什么 K/V 不该一把梭同一种量化方式”，先读这组。
 
 ### 2. 预测增强 / 自适应量化
-- [[Cache-Me-If-You-Must]]
+- [[Cache-Me-If-You-Must✅]]
 
 这一路的关键变化是：
 - 不直接压整个原始 KV；
@@ -92,7 +92,7 @@ $$
 1. [[Quant-VideoGen]]
 2. [[VidKV]]
 3. [[KIVI]]
-4. [[Cache-Me-If-You-Must]]
+4. [[Cache-Me-If-You-Must✅]]
 5. [[Relax-Forcing]]
 6. [[Deep-Forcing]]
 

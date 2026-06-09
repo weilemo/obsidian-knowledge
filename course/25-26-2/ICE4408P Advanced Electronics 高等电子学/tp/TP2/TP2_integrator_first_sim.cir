@@ -1,0 +1,36 @@
+* TP2 Simulation 1 - non-inverting switched-capacitor integrator
+* Open this file in LTspice and run the transient analysis.
+* Plot V(VE), V(VS), V(PHI1), and V(PHI2).
+
+.param CVAL=10p
+
+Vphi1 PHI1 0 PULSE(0 5 0 10u 10u 480u 1m)
+Vphi2 PHI2 0 PULSE(0 5 500u 10u 10u 480u 1m)
+Ve VE 0 1
+Vcc VCC 0 5
+Vee VEE 0 -5
+
+S1 VE A PHI1 0 SWID
+S2 A 0 PHI2 0 SWID
+C1 A B {CVAL}
+S3 B 0 PHI1 0 SWID
+S4 B SUM PHI2 0 SWID
+C2 SUM VS {CVAL} IC=0
+
+* Leakage resistors and tiny parasitic capacitors prevent floating-node numerical errors.
+RA A 0 1T
+RB B 0 1T
+RSUM SUM 0 1T
+CA A 0 1f
+CB B 0 1f
+CSUM SUM 0 1f
+
+* Smooth ideal high-gain op-amp with output softly limited near +/-5 V.
+* Non-inverting input is grounded, inverting input is SUM.
+BOP VS 0 V=4.95*tanh(-1e5*V(SUM))
+
+.model SWID SW(Ron=10 Roff=1g Vt=2.5 Vh=0.2)
+.ic V(VS)=0 V(SUM)=0 V(A)=0 V(B)=0
+.options method=gear reltol=0.003
+.tran 0 10m 0 2u uic
+.end

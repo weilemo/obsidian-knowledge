@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="language" content="english">
+  <title>Lab 6 | CS61C Spring 2026</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light dark">
+
+  <link rel="shortcut icon" type="image/png" href="/sp26/img/favicon.png">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css" integrity="sha512-GQGU0fMMi238uA+a/bdWJfpUGKUkBdgfFdgBm72SUQ6BeyWjoY/ton0tEjH+OSH9iP4Dfh+7HM0I9f5eR0L/4w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/js/bootstrap.min.js" integrity="sha512-OvBgP9A2JBgiRad/mM36mkzXSXaJE9BEIENnVEmeZdITvwT09xnxLtT4twkCa8m/loMbPHsvPl0T8lRGVBwjlQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/instant.page/5.1.0/instantpage.min.js" integrity="sha512-1+qUtKoh9XZW7j+6LhRMAyOrgSQKenQ4mluTR+cvxXjP1Z54RxZuzstR/H9kgPXQsVB8IW7DMDFUJpzLjvhGSQ==" crossorigin="anonymous"></script>
+
+
+  <link rel="stylesheet" href="/sp26/css/main.css?h=f8bd781ba155b1b368c870416f8523be84e7ec2bcec8d335573a0c95c849e327" />
+  <script defer type="text/javascript" src="/sp26/js/main.js?h=ad997e2a23022756f6ea00b8b4e23a4ee1a56495d9f493dcb7b75cae0dc3465f"></script>
+
+  <!-- block for FICT/FaRT -->
+  <script type="text/javascript" src="/sp26/js/main-sync.js?h=a5a9607bf30db01764e4c92a4d4832318d20ec7d3ec29af4ddf72b7ddcb13817"></script>
+  <script>initDarkToggle();</script>
+
+  
+
+
+
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.17.0/tocbot.min.js" integrity="sha512-DJhUMo5TIBb3fFziiE+3OJG+j7ky+GxScxHdLADCXskEpc/AKQsbsorIYmGFJFaJvDIyP65rJNhnCTytfYAdUw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark mb-4">
+  <div class="container">
+    <a class="navbar-brand" href="/sp26/">
+      <img class="d-inline-block me-2 rounded" height="48" width="48" src="/sp26/img/icon-small.png" alt="outline of square computer chip with cs61c label" />
+      <span class="align-middle">CS61C Spring 2026</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle Navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="/sp26/calendar/">Calendar</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/sp26/exam/">Exam</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/sp26/policies/">Policies</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://edstem.org/us/courses/93340/">Ed</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarLinksDropdownToggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Quick Links</a>
+          <ul class="dropdown-menu p-0" aria-labelledby="navbarLinksDropdownToggle">
+            <li><a class="dropdown-item nav-link" href="https://flextensions.berkeley.edu/">Request an Extension</a></li>
+            <li><a class="dropdown-item nav-link" href="https://oh.cs61c.org/">OH Queue</a></li>
+            <li><a class="dropdown-item nav-link" href="https://venus.cs61c.org/">Venus</a></li>
+            <li><a class="dropdown-item nav-link" href="https://calendar.app.google/usQAgWHiiLPBH7hi6">Student Support Meeting</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarLinksDropdownToggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Resources</a>
+          <ul class="dropdown-menu p-0" aria-labelledby="navbarLinksDropdownToggle">
+            <li><a class="dropdown-item nav-link" href="/sp26/resources/common-errors/">Common Errors</a></li>
+            <li><a class="dropdown-item nav-link" href="https://notes.cs61c.org/">Course Notes</a></li>
+            <li><a class="dropdown-item nav-link" href="/sp26/pdfs/resources/reference-card.pdf">Reference Card</a></li>
+            <li><a class="dropdown-item nav-link" href="/sp26/resources/">Resource Index</a></li>
+            <li><a class="dropdown-item nav-link" href="/sp26/resources/exams/">Past Exams</a></li>
+            <li><a class="dropdown-item nav-link" href="https://inst.eecs.berkeley.edu/~cs61c/archives.html">Past Semesters</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/sp26/staff/">Staff</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+  <main class="mb-4">
+    <section class="section">
+      <div class="container">
+        
+
+		
+
+        
+<div class="row spec">
+  
+    <nav id="toc-wrapper" class="col-md-3 d-print-none sticky-md-top nav-wrapper" aria-label="table of contents">
+      
+  <ul class="nav flex-column">
+    
+      <li class="nav-item">
+        <a class="nav-link" href="/sp26/labs/lab06/#setup">Setup</a>
+        
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-link" href="/sp26/labs/lab06/#exercise-1-constructing-immediates">Exercise 1: Constructing Immediates</a>
+        
+          
+  <ul class="nav flex-column">
+    
+      <li class="nav-item">
+        <a class="nav-link" href="/sp26/labs/lab06/#testing">Testing</a>
+        
+      </li>
+    
+  </ul>
+
+        
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-link" href="/sp26/labs/lab06/#exercise-2-constructing-the-brun-control-signal">Exercise 2: Constructing the BrUn Control Signal</a>
+        
+          
+  <ul class="nav flex-column">
+    
+      <li class="nav-item">
+        <a class="nav-link" href="/sp26/labs/lab06/#testing-1">Testing</a>
+        
+      </li>
+    
+  </ul>
+
+        
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-link" href="/sp26/labs/lab06/#exercise-3-inefficiencies-everywhere">Exercise 3: Inefficiencies Everywhere</a>
+        
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-link" href="/sp26/labs/lab06/#exercise-4-pipe-that-line">Exercise 4: Pipe that Line</a>
+        
+          
+  <ul class="nav flex-column">
+    
+      <li class="nav-item">
+        <a class="nav-link" href="/sp26/labs/lab06/#testing-2">Testing</a>
+        
+      </li>
+    
+  </ul>
+
+        
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-link" href="/sp26/labs/lab06/#exercise-5-debugging-circuits">Exercise 5: Debugging Circuits</a>
+        
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-link" href="/sp26/labs/lab06/#exercise-6-reflection-and-feedback-form">Exercise 6: Reflection and Feedback Form</a>
+        
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-link" href="/sp26/labs/lab06/#submission">Submission</a>
+        
+      </li>
+    
+  </ul>
+
+    </nav>
+  
+  <div id="toc-content-wrapper"  class="content col-md-9" >
+    <h1 class="title">Lab 6: CPU, Pipelining</h1>
+    
+      <p class="subtitle">Deadline: Thursday, April 2, 11:59:59 PM PT</p>
+    
+    
+    <p><a href="https://docs.google.com/presentation/d/1Ee3HwAuuWPOTbCGQ-RrzVvdqbir_BBC4Y47wYl97krM/edit?usp=sharing">Lab Slides</a></p>
+<h2 id="setup">Setup</h2>
+<div  class="alert alert-warning">
+  <p>You must complete this lab on your local machine (not hive machine). See <a href="/sp26/labs/lab00/">Lab 0</a> if you need to set up your local machine again.</p>
+
+</div>
+<p>In your <code>labs</code> directory on your local machine, pull any changes you may have made in past labs:</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">git</span></span><span class="z-meta z-function-call z-arguments z-shell"> pull origin main</span>
+</span></code></pre>
+<p>Still in your <code>labs</code> directory on your local machine, pull the files for this lab with:</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">git</span></span><span class="z-meta z-function-call z-arguments z-shell"> pull starter main</span>
+</span></code></pre>
+<p>If you run into any <code>git</code> errors, please check out the <a href="/sp26/resources/common-errors/">common errors</a> page.</p>
+<p>Like Lab 5, all the work in this lab will be done using the digital logic simulation program <strong>Logisim Evolution</strong>.</p>
+<p>Some important warnings before you begin:</p>
+<ul>
+<li>Logisim is a GUI program, so it can't easily be used in a headless environment (WSL, SSH, etc.). We recommend running it in a <strong>local environment</strong> with a GUI, Java 9+, and Python 3.6+. If your local system is macOS or Linux you're probably all set. If you're on Windows, use <code>Git Bash</code>, which runs on Windows with GUI support.</li>
+<li>Please use the version of Logisim that we distribute, since it is different from other versions on the internet (bugfixes and course-specific stuff)</li>
+<li>Don't move the staff-provided input/output pins; your circuit can't be tested properly if the pins move. If your circuit doesn't pass the tests and you think it is correct, check that your circuit fits in the corresponding harness in <code>tests/ex#-test.circ</code></li>
+<li>Logisim doesn't auto-save your work. Remember to save (and commit) frequently as you work!</li>
+</ul>
+<h2 id="exercise-1-constructing-immediates">Exercise 1: Constructing Immediates</h2>
+<p>As we have seen in lecture, there are five types of immediates in RISC-V: I-type, S-type, B-type, U-type, and J-type. In this exercise, you will be implementing the <strong>S-type</strong> immediate generator. <code>ex1.circ</code> will take as an input a 32-bit RISC-V store instruction. It should output the sign-extended 32-bit immedate value of the instruction. Constructing the immediate value will require the use of splitters. You can find the summary of how splitters work under the Advanced Logisim Features section in Lab 5.</p>
+<p>This exercise will be helpful for Project 3!</p>
+<ol>
+<li><strong>Open</strong> <code>ex1.circ</code>. This circuit takes in a 32-bit RISC-V <strong>store instruction</strong>.</li>
+<li><strong>Modify</strong> the circuit so that it outputs the 32-bit sign-extended immediate value of the instruction. You may assume that the instruction is always a store instruction.</li>
+</ol>
+<h3 id="testing">Testing</h3>
+<ol>
+<li><strong>Open</strong> a local terminal session and navigate to your <code>lab06</code> folder.</li>
+<li><strong>Run</strong> the provided tests with <code>python3 test.py</code>.
+<ul>
+<li>Your Exercise 1 circuit is run in a test harness circuit (<code>tests/ex1-test.circ</code>).</li>
+<li>Your output is located at <code>tests/out/ex1-test.out</code></li>
+<li>The reference output is located at <code>tests/out/ex1-test.ref</code></li>
+<li>In the output file, each column corresponds to an input/output pin on the main circuit, and each row shows a set of inputs and the corresponding outputs the circuit produced.</li>
+<li>If your circuit output is different, you can check it against the reference output file; the <code>diff</code> command may help.</li>
+</ul>
+</li>
+</ol>
+<h2 id="exercise-2-constructing-the-brun-control-signal">Exercise 2: Constructing the BrUn Control Signal</h2>
+<p>The <code>BrUn</code> control signal is used to tell the branch comparator whether the branch comparison is being performed on signed or unsigned numbers. The following table summarizes the expected value of <code>BrUn</code>.</p>
+<table><thead><tr><th>Type of Instruction</th><th><code>BrUn</code></th><th>Notes</th></tr></thead><tbody>
+<tr><td>Unsigned branch comparison</td><td><code>1</code></td><td>-</td></tr>
+<tr><td>Signed branch comparison</td><td><code>0</code></td><td>-</td></tr>
+<tr><td><code>beq</code> or <code>bne</code></td><td>Don't care</td><td>The sign of the numbers are not needed when determining if the numbers are equal</td></tr>
+<tr><td>Non-branch</td><td>Don't care</td><td>We do not use the output of the branch comparator for non-branch instructions</td></tr>
+</tbody></table>
+<p>If the value is listed as &quot;don't care&quot;, this means that you can set <code>BrUn</code> to <code>0</code> or <code>1</code>.</p>
+<p>Remember that both of the inputs will either be signed or unsigned. You cannot have the case where one number is signed and one is unsigned. Our hardware does not support comparing an unsigned number to a signed number.</p>
+<p>We've provided you with the following hints to help you with your implementation.</p>
+<details>
+<summary>Which field of the instruction identifies the type of branch?</summary>
+funct3
+</details>
+<details>
+<summary>Does the opcode field matter?</summary>
+<p>You can use the <code>opcode</code> and <code>funct3</code> fields to set <code>BrUn</code> to <code>1</code> whenever the instruction is performing an unsigned branch comparison.</p>
+<p>However, the opcode field does not matter when implementing <code>BrUn</code> since it is &quot;don't care&quot; for all non-branch instructions. We can simply output a <code>1</code> if the <code>funct3</code> field corresponds to the <code>funct3</code> field of an unsigned branch instruction. It is ok if <code>BrUn</code> is <code>1</code> for a non-branch instruction because the non-branch instruction does not use the output of the branch comparator.</p>
+</details>
+<p>Depending on your implementation, constants and comparators will be very helpful for this exercise. The constants can be found in the Wiring library. You can choose the value of the constant in the Properties section in the bottom left window. You can also change the number of bits that are used to represent the constant in the Properties section.</p>
+<p>Comparators have two inputs and are used to determine if the first input is less than, equal to, or greater than the second input. They can be found in the Arithmetic library. You can select the size of the inputs and whether the comparison is unsigned or 2's complement in the Properties section in the bottom left window.</p>
+<p>This exercise will be helpful for Project 3!</p>
+<ol>
+<li><strong>Open</strong> <code>ex2.circ</code>. This circuit takes a 32-bit RISC-V instruction as input and outputs the value of the <code>BrUn</code> control signal.</li>
+<li><strong>Modify</strong> the circuit so that it properly generates the value of <code>BrUn</code>.
+<ul>
+<li>Note: The input instruction may or may not be a branch instruction.</li>
+</ul>
+</li>
+</ol>
+<h3 id="testing-1">Testing</h3>
+<p>Refer to <a href="/sp26/labs/lab06/#testing">exercise 1's testing section</a>, except the output file prefixes are now <code>ex2-test</code> instead of <code>ex1-test</code>.</p>
+<h2 id="exercise-3-inefficiencies-everywhere">Exercise 3: Inefficiencies Everywhere</h2>
+<p>For this exercise, we can assume that registers initially carry the value zero. We will be using the lab file <code>ex3.circ</code>, which should have a subcircuit called <code>non_pipelined</code> which looks something like this:</p>
+<p><img src="/sp26/labs/lab06/exercise3.png" alt="" /></p>
+<p>This circuit simply takes two inputs, multiplies them together, and then adds the result to the current state value. For this circuit, let the propagation delay of an adder block be 45ns and the propagation delay of a multiplication block be 60ns. The register has a CLK-to-Q delay of 10ns, setup time of 10ns, and hold time of 5ns. Assume that both inputs receive their data from registers (so the inputs arrive CLK-to-Q after the rising edge).</p>
+<p>This exercise will ask you to write down your answers in <code>ex3_answers.txt</code>.</p>
+<ul>
+<li>Question 1: What is the length of the critical path of this circuit in <strong>ns</strong>. The answer should be an integer without any units.</li>
+</ul>
+<h2 id="exercise-4-pipe-that-line">Exercise 4: Pipe that Line</h2>
+<p>We want to improve the performance of this circuit and let it operate at a higher clock rate. In order to accomplish this, we want to have two stages in our pipeline: a multiplication stage and an addition stage, in that order.</p>
+<p>To pipeline the circuit, we need a register to hold the intermediate value of the computation between pipeline stages. This is a general theme with pipelining.</p>
+<p>In order to check that your pipelining still produces correct outputs, we will consider the outputs from the circuit &quot;correct&quot; if and only if it corresponds to the sequence of outputs the non-pipelined version would emit, but now the circuit will have a leading zero. This leading zero occurs because the second stage of the pipeline is &quot;empty&quot; in the first cycle.</p>
+<p>To view the inputs to the circuit and the corresponding outputs for each cycle, take a look at <code>out/ex4-test.ref</code>. The output is <code>00000000</code> for cycle zero because nothing has moved through the pipeline yet. Cycle zero is essentially just printing out the starting state of the circuit. The output is <code>00000000</code> for cycle one because the second stage of the pipeline is &quot;empty&quot; in the first cycle.</p>
+<p>We discussed that if an instruction depends on the output of a previous instruction, we need to either insert a pipeline &quot;bubble&quot; (or several)  or include forwarding logic to ensure that the output of the first instruction is ready to be an input to the second. As a reminder, a bubble purposely delays an instruction in the pipeline.</p>
+<details>
+<summary>Why are such "bubbles" unnecessary for this particular circuit?</summary>
+<p>For this exercise, ONE instruction consists of BOTH an addition and a multiplication. The addition and multiplication are NOT two separate instructions.</p>
+<p>Instead, they are two separate stages in the pipeline, similar to how EX and MEM are two separate stages in a pipeline that operates on the same instruction with EX operating on the instruction before MEM operates on the instruction second.</p>
+<p>We do not have any bubbles in this particular circuit because none of the individual instructions depend on each other.</p>
+</details>
+<p>This exercise will ask you to write down your answers in <code>ex4_answers.txt</code>. The question numbers may be different from the step numbers, please be careful!</p>
+<ol>
+<li><strong>Open</strong> <code>ex4.circ</code> and <strong>pipeline</strong> the circuit found in <code>ex3.circ</code>
+<ul>
+<li>Question 1: What is the critical path of this pipelined circuit in <strong>ns</strong>. The answer should be an integer without any units.</li>
+<li>Question 2: What is the maximum clock rate for this pipelined circuit in <strong>MHz</strong>. The answer should be a decimal number without any units.</li>
+</ul>
+</li>
+</ol>
+<h3 id="testing-2">Testing</h3>
+<p>Refer to <a href="/sp26/labs/lab06/#testing">exercise 1's testing section</a>, except the output file prefixes are now <code>ex4-test</code> instead of <code>ex1-test</code>.</p>
+<h2 id="exercise-5-debugging-circuits">Exercise 5: Debugging Circuits</h2>
+<p>Let’s take a look at a buggy implementation of the <code>num_checker</code> circuit which, given a 32 bit number, will tell us if it is odd, even, zero, greater than fifteen, or is either five or ten. This circuit might not be too exciting, but the structure of the test circuit will be very similar to that of the project.</p>
+<p>This exercise will ask you to write down your answers in <code>ex5_answers.txt</code>. The text file only has bullets for the first two questions, so please add bullets as you answer the questions (e.g. <code>3. </code>, <code>4. </code>, etc). The question numbers may be different from the step numbers, please be careful!</p>
+<ol>
+<li>
+<p>First, let’s get familiar with our testing harness. <strong>Open</strong> up the exercise 5 test circuit (<code>File -&gt; Open -&gt; lab06/tests/ex5-test.circ</code>).</p>
+<ul>
+<li>
+<p>The project test harness uses ROMs to store RISC-V instructions which will be fed into your CPU. For this circuit, the big block with hex digits is our ROM that contains the numbers which we will feed sequentially into our <code>ex5</code> circuit.</p>
+</li>
+<li>
+<p>This ROM will output a 32-bit integer at the index provided. In this case, we go sequentially through each number stored in our ROM.</p>
+<p><img src="/sp26/labs/lab06/ex5-rom.png" alt="" /></p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Navigate</strong> from the test harness to our <code>num_checker</code> circuit by right-clicking on <code>num_checker</code> and click &quot;View num_checker&quot;.</p>
+<p><img src="/sp26/labs/lab06/ex5-subcircuit-view.png" alt="" /></p>
+<ul>
+<li>
+<p>Alternatively, the &quot;Simulate&quot; tab allows you to easily switch between circuits as well.</p>
+<p><img src="/sp26/labs/lab06/ex5-simulate-tab.png" alt="" /></p>
+</li>
+</ul>
+</li>
+<li>
+<p>Before we start debugging, we should do two things:</p>
+<ol>
+<li>
+<p><strong>Build</strong> the following gadget in <code>num_checker</code>. Remember to label the register in the gadget to <code>num_cycles</code>. This gadget, like a counter, allows us to check the current time step by probing the output of the register. This gadget can be located anywhere in the <code>num_checker</code> circuit standalone. It’s recommended to build this gadget whenever you debug in projects to make debugging easier.</p>
+<ul>
+<li>To edit <code>num_checker</code>, you must open its corresponding circuit file, <code>ex5.circ</code>. You cannot edit it through the test circuit. After editing, <strong>reopen</strong> <code>ex5_test.circ</code> for the changes to show up.
+<img src="/sp26/labs/lab06/ex5-gadget.png" alt="" /></li>
+<li>To label the register, go on the selection tool (the one that looks like a mouse cursor), and then double-click the corresponding register.</li>
+</ul>
+</li>
+<li>
+<p>Next, <strong>open</strong> the waveform viewer in Logisim (<code>Simulate -&gt; Timing Diagram</code>). After the window pops up, click the <code>Timing Diagram</code> to view the waveforms. If your window is too small, drag it out along the side of your screen so it looks like the window below.</p>
+<p><img src="/sp26/labs/lab06/ex5-waveform-viewer.png" alt="" /></p>
+<ul>
+<li>
+<p>Click the <code>Add or Remove Signals</code> button. Let's remove the signals <code>halt</code> and <code>CYCLE</code> from view by using the arrows in the middle. Let's also add the <code>num_cycles</code> signal to view. You can find the <code>num_cycles</code> signal by scrolling down the signals available in the circuit and clicking the <code>num_checker</code> dropdown.</p>
+<p><img src="/sp26/labs/lab06/ex5-signal-selection.png" alt="" /></p>
+</li>
+<li>
+<p>After you click <code>Ok</code>, you should see the added <code>num_cycles</code> signal in the waveform viewer. Make sure to expand the <code>Signal Name</code> column so that all text is visible. Then, right click on <code>num_cycles</code> to change its type to <code>Signed Decimal</code>. Do the same to the <code>num</code> signal.</p>
+<p><img src="/sp26/labs/lab06/ex5-waveform-viewer-type.png" alt="" /></p>
+</li>
+<li>
+<p>The waveform viewer allows us to see a bunch of signals and their corresponding values per cycle. It's recommended to use the waveform viewer whenever you debug in projects.</p>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>
+<p>Let's <strong>probe</strong> (i.e. look at the value of certain wires) some outputs and use the waveform viewer to pinpoint the bug!</p>
+<ul>
+<li>Question 1: What is the value of <code>bit_zero</code> at time step 0 (before we tick)? The answer should be a single decimal digit. (Hint: You can find <code>bit_zero</code> inside of the <code>num_checker</code> circuit.)</li>
+<li>Question 2: What is the value of <code>is_odd</code> at time step 0? The answer should be a single decimal digit.</li>
+</ul>
+</li>
+<li>
+<p><strong>Tick</strong> the clock one full cycle. The circuit should be at time step 1 now (the gadget you made in step 3 part 1 should also reflect that).</p>
+<ul>
+<li>Question 3: What is the value of <code>bit_zero</code>? The answer should be a single decimal digit.</li>
+<li>Question 4: What is the output for <code>is_odd</code>? The answer should be a single decimal digit.</li>
+</ul>
+</li>
+<li>
+<p><strong>Tick</strong> the clock two more full cycles.</p>
+<ul>
+<li>Question 5: Using the waveform viewer, what is the value of <code>num</code>, in decimal? The answer should be an integer.</li>
+<li>Question 6: Using the waveform viewer, what is the value of the output pin <code>greater_than_fifteen</code>? The answer should be a single decimal digit.</li>
+</ul>
+</li>
+<li>
+<p><strong>Tick</strong> the clock one more full cycle.</p>
+<ul>
+<li>Question 7: Using the waveform viewer, what is the value of <code>num</code>, in decimal? The answer should be an integer.</li>
+<li>Question 8: Using the waveform viewer, what is the value of the output pin <code>greater_than_fifteen</code>? The answer should be a single decimal digit.</li>
+</ul>
+</li>
+<li>
+<p><strong>Tick</strong> the clock one more full cycle.</p>
+<ul>
+<li>Question 9: What time step is the circuit at? The answer should be an integer.</li>
+<li>Question 10: What is the value of <code>bits_five</code>, in binary? The answer should be a 3-bit binary number, with the <code>0b</code> prefix.</li>
+<li>Question 11: What is the value of the output pin <code>five_or_ten</code>. The answer should be a single decimal digit.</li>
+</ul>
+</li>
+<li>
+<p>Now that we are familiar with the behavior of our circuit, let’s <strong>run</strong> the test (using <code>python3 test.py</code>). </p>
+</li>
+<li>
+<p>To look at the output, <strong>open</strong> <code>ex5-test.out</code> (the circuit output) and <code>ex5-test.ref</code> (the expected output). Both files are located in the <code>tests/out</code> folder. There should be a few values that are different.</p>
+</li>
+<li>
+<p>With the knowledge you've gained from simulating the circuit, fix the <code>num_checker</code> circuit so that it passes the test. Feel free to run through the simulator a couple more times! </p>
+<ul>
+<li>Note: All simulation should be done inside your <code>ex5_test.circ</code> Logisim window. Remember to navigate back into the <code>num_checker</code> circuit block to probe your outputs. Do not simulate in your <code>num_checker</code> window (the clock and inputs will not sync between files).</li>
+</ul>
+</li>
+</ol>
+<h2 id="exercise-6-reflection-and-feedback-form">Exercise 6: Reflection and Feedback Form</h2>
+<p>We are working to improve the class every week - please fill out <a href="https://docs.google.com/forms/d/e/1FAIpQLSfWAGB84Y3G2mguauvDn4beCYne4UAHfuwl2-42lNSsQqQmpw/viewform?usp=publish-editor">this survey</a> to tell us about your experience in discussion and lab so far!</p>
+<hr />
+<h2 id="submission">Submission</h2>
+<p>Save, commit, and push your work, then submit to the <strong>Lab 6</strong> assignment on Gradescope.</p>
+
+  </div>
+</div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer>
+  <div class="container border-top pt-4 mb-5">
+    <div class="row">
+      <div class="col">
+        <div id="dark-toggle-wrapper" class="d-none">
+          <div class="form-check form-switch">
+            <input id="inputDarkToggle" class="form-check-input" type="checkbox">
+            <label class="form-check-label" for="inputDarkToggle">
+              Dark Mode
+              <a id="buttonDarkToggleReset" class="d-none" href="javascript:void(0);">(reset)</a>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  
+<script>
+  
+
+  
+    document.addEventListener("DOMContentLoaded", function() {
+      initToC();
+    });
+  
+</script>
+
+</body>
+
+</html>

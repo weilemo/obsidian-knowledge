@@ -1,0 +1,28 @@
+* TP2 Simulation 3 - stable oscillator, block-level equivalent
+* Run, then plot V(X), V(Y), and V(KICK).
+* Target output frequency: 20 Hz.
+
+.param fe=1000
+.param f0=20
+.param k=2*sin(pi*f0/fe)
+.param C2=10p
+.param C1={k*C2}
+.param omega=2*pi*f0
+
+* Equivalent continuous-time block model of the stable oscillator.
+* It represents the two-integrator loop used in Simulation 3.
+CX X 0 1 IC=0
+CY Y 0 1 IC=0
+BX 0 X I={omega*V(Y)}
+BY 0 Y I={-omega*V(X)}
+
+* Startup pulse, analogous to the pulse source requested in the TP.
+* IKICK injects a 1 ms current pulse into the X integrator capacitor,
+* giving x an initial displacement close to 1 V.
+VKICK KICK 0 PULSE(0 1 100m 1u 1u 1m 10)
+IKICK 0 X PULSE(0 1000 100m 1u 1u 1m 10)
+
+* Numerical options.
+.options method=gear reltol=0.003
+.tran 0 2 0 100u uic
+.end

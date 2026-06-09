@@ -11,6 +11,14 @@ summary: "Research/Paper 目录的 Dataview 可视化看板（纯 Dataview，无
 
 > 使用说明：本页全部使用 `dataview`（不是 `dataviewjs`），即使 Dataview JS 关闭也能正常显示。
 
+## 转型主线入口
+
+- [[Coding-Agent-研究地图]]
+- [[Agent-Memory-研究地图]]
+- [[Agent-Self-Improvement-研究地图]]
+- [[MLLM-研究地图]]
+- [[LLM-Training-研究地图]]
+
 ## 总览
 ```dataview
 TABLE WITHOUT ID

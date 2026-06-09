@@ -29,8 +29,8 @@ run_case() {
 }
 
 echo "开始校验触发器规则..."
-run_case "Case A 时间冲突" "INSERT INTO reservations (user_id, device_id, start_time, end_time, status, purpose) VALUES (2, 1, '2026-04-01 10:00:00', '2026-04-01 10:30:00', 'approved', '冲突测试');"
-run_case "Case B 资质不足" "INSERT INTO reservations (user_id, device_id, start_time, end_time, status, purpose) VALUES (3, 2, '2026-04-03 09:00:00', '2026-04-03 11:00:00', 'approved', '资质测试');"
-run_case "Case C 维护冲突" "INSERT INTO reservations (user_id, device_id, start_time, end_time, status, purpose) VALUES (2, 2, '2026-04-02 14:00:00', '2026-04-02 15:00:00', 'approved', '维护冲突测试');"
+run_case "Case A 时间冲突" "INSERT INTO reservations (user_id, device_id, start_time, end_time, status, purpose) VALUES (2, 1, '2026-06-03 10:00:00', '2026-06-03 10:30:00', 'approved', '冲突测试');"
+run_case "Case B 资质不足" "INSERT INTO reservations (user_id, device_id, start_time, end_time, status, purpose) VALUES (3, 1, '2026-06-05 09:00:00', '2026-06-05 11:00:00', 'approved', '资质测试');"
+run_case "Case C 维护/设备不可用冲突" "INSERT INTO reservations (user_id, device_id, start_time, end_time, status, purpose) VALUES (2, 2, '2026-06-04 14:00:00', '2026-06-04 15:00:00', 'approved', '维护冲突测试');"
 
 echo "校验完成。"

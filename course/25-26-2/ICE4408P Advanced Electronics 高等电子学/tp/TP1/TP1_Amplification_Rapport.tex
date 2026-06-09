@@ -1,0 +1,322 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{siunitx}
+\usepackage{booktabs}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{tikz}
+\usepackage{circuitikz}
+\usepackage{hyperref}
+
+\geometry{margin=2.5cm}
+\sisetup{
+  locale=FR,
+  per-mode=symbol,
+  detect-all
+}
+
+\title{TP1 -- Amplification}
+\author{Nom : \underline{\hspace{5cm}} \qquad Groupe : \underline{\hspace{3cm}}}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Objectif du TP}
+
+L'objectif de ce TP est de réaliser et de caractériser un amplificateur à transistor NMOS en montage source commune. On cherche d'abord à identifier la zone de fonctionnement linéaire du transistor, puis à fixer un point de polarisation adapté. Ensuite, on mesure les performances petit signal du montage : gain en tension, résistance de sortie, fréquences de coupure, bande passante et produit gain-bande.
+
+Les valeurs imposées dans le montage sont :
+\[
+V_{DD}=\SI{5.0}{V}, \qquad R_d=\SI{10}{k\ohm}.
+\]
+
+\section{Étude de la caractéristique de transfert}
+
+Dans une première étape, le montage NMOS avec la résistance de drain $R_d$ est alimenté par une tension triangulaire appliquée en entrée. L'oscilloscope est utilisé en mode X-Y afin d'observer la caractéristique de transfert :
+\[
+V_s=f(V_e).
+\]
+
+La courbe obtenue permet de distinguer trois zones de fonctionnement. Pour une faible tension d'entrée, le transistor est bloqué et la sortie reste proche de $V_{DD}$. Pour une tension d'entrée intermédiaire, le transistor fonctionne dans une zone presque linéaire, utilisable pour l'amplification. Enfin, pour une tension d'entrée trop grande, le transistor devient fortement passant et le montage sort de la zone linéaire.
+
+D'après la mesure, la zone linéaire observée est approximativement :
+\[
+1.77\,\mathrm{V} \leq V_e \leq 2.64\,\mathrm{V},
+\]
+et la tension de sortie correspondante varie environ entre :
+\[
+5.08\,\mathrm{V} \geq V_s \geq 0.28\,\mathrm{V}.
+\]
+
+Le gain de transfert statique est donc estimé par la pente de la partie linéaire :
+\[
+G_T=\frac{\Delta V_s}{\Delta V_e}
+=\frac{0.28-5.08}{2.64-1.77}
+\approx -5.52.
+\]
+
+Le signe négatif traduit le caractère inverseur du montage source commune : lorsque $V_e$ augmente, $V_s$ diminue.
+
+\section{Choix du point de fonctionnement}
+
+Pour obtenir une amplification petit signal aussi linéaire que possible, on choisit de polariser la sortie au milieu de la plage d'alimentation :
+\[
+V_{s,0}=\frac{V_{DD}}{2}=\SI{2.5}{V}.
+\]
+
+Le générateur basse fréquence est retiré pour la polarisation continue. Une résistance $R_1=\SI{10}{k\ohm}$ et une résistance variable $R_2$ sont ajoutées afin de fixer la tension d'entrée continue $V_{e,0}$. En réglant $R_2$, on impose :
+\[
+V_s=V_{s,0}=\SI{2.5}{V}.
+\]
+
+Les valeurs mesurées après réglage sont :
+\[
+V_{e,0}\approx \SI{2.37}{V}, \qquad R_2\approx \SI{9.0}{k\ohm}.
+\]
+
+Ces valeurs sont cohérentes avec le diviseur de tension formé par $R_1$ et $R_2$ :
+\[
+V_{e,0}=V_{DD}\frac{R_2}{R_1+R_2}
+=5.0\frac{9.0}{10.0+9.0}
+\approx \SI{2.37}{V}.
+\]
+
+\section{Mesure du gain petit signal}
+
+Après polarisation, on ajoute les condensateurs de liaison :
+\[
+C_{L,e}=C_{L,s}=\SI{10}{nF}.
+\]
+
+Le signal d'entrée est un sinus petit signal à la fréquence :
+\[
+f_0=\SI{10}{kHz}.
+\]
+
+En sortie à vide, c'est-à-dire sans résistance de charge, l'amplitude d'entrée est ajustée afin d'obtenir une sortie non écrêtée, proche de \SI{1}{V} crête-à-crête. Les mesures sont :
+\[
+V_{e,pp}=\SI{0.14}{V}, \qquad V_{s,pp}\approx \SI{1.0}{V}.
+\]
+
+Le gain en tension à vide vaut donc :
+\[
+G_0=\frac{V_{s,pp}}{V_{e,pp}}
+\approx \frac{1.0}{0.14}
+\approx 7.1.
+\]
+
+Le montage étant inverseur, le gain réel est négatif si l'on tient compte de la phase. Dans la suite, on utilise la valeur absolue du gain pour les calculs de bande passante.
+
+\section{Mesure de la résistance de sortie}
+
+On connecte ensuite une résistance de charge :
+\[
+R_u=\SI{10}{k\ohm}.
+\]
+
+Le gain mesuré avec cette charge est :
+\[
+G=4.1.
+\]
+
+Pour déterminer la résistance de sortie du montage, on modélise la sortie de l'amplificateur par un équivalent de Thévenin : une source idéale de tension suivie d'une résistance série $R_s$.
+
+\begin{figure}[H]
+\centering
+\begin{circuitikz}[american voltages]
+  \draw
+  (0,0) to[sV,l=$G_0V_e$] (0,2)
+  to[R,l=$R_s$] (3,2)
+  to[R,l=$R_u$] (3,0)
+  -- (0,0);
+  \draw (3,2) -- (4,2);
+  \draw (3,0) -- (4,0);
+  \draw[->] (4,0.2) -- (4,1.8) node[midway,right] {$V_s$};
+\end{circuitikz}
+\caption{Modèle de sortie utilisé pour déterminer $R_s$.}
+\end{figure}
+
+Avec ce modèle, la charge forme un pont diviseur avec la résistance de sortie :
+\[
+G=G_0\frac{R_u}{R_s+R_u}.
+\]
+
+On en déduit :
+\[
+R_s=R_u\left(\frac{G_0}{G}-1\right).
+\]
+
+Numériquement :
+\[
+R_s=10\,\mathrm{k\Omega}
+\left(\frac{7.1}{4.1}-1\right)
+\approx \SI{7.3}{k\ohm}.
+\]
+
+\section{Réponse fréquentielle et bande passante}
+
+La réponse fréquentielle est mesurée à vide en faisant varier la fréquence du signal d'entrée. Le gain maximal est observé autour de :
+\[
+f_0=\SI{10}{kHz}.
+\]
+
+Le gain maximal vaut :
+\[
+G_0=7.1.
+\]
+
+Les fréquences de coupure à \SI{-3}{dB} sont définies comme les fréquences pour lesquelles :
+\[
+G(f)=\frac{G_0}{\sqrt{2}}.
+\]
+
+Dans ce cas :
+\[
+\frac{G_0}{\sqrt{2}}=\frac{7.1}{\sqrt{2}}\approx 5.02.
+\]
+
+Les valeurs mesurées sont :
+\[
+f_c^b\approx \SI{3}{kHz}, \qquad f_c^h\approx \SI{320}{kHz}.
+\]
+
+La bande passante à \SI{-3}{dB} vaut donc :
+\[
+B=f_c^h-f_c^b
+=320\,\mathrm{kHz}-3\,\mathrm{kHz}
+=\SI{317}{kHz}.
+\]
+
+Comme $f_c^h$ est très supérieur à $f_c^b$, on peut également approximer :
+\[
+B\approx f_c^h.
+\]
+
+\section{Comparaison avec la fréquence de coupure basse théorique}
+
+La fréquence de coupure basse est principalement due au condensateur de liaison d'entrée $C_{L,e}$ et à la résistance équivalente vue à l'entrée. Cette résistance vaut :
+\[
+R_{\mathrm{eq}}=R_1\parallel R_2.
+\]
+
+Ainsi :
+\[
+f_{c,\mathrm{th}}^b
+=\frac{1}{2\pi R_{\mathrm{eq}}C_{L,e}}
+=\frac{1}{2\pi C_{L,e}}
+\left(
+\frac{1}{R_1}+\frac{1}{R_2}
+\right).
+\]
+
+Avec :
+\[
+R_1=\SI{10}{k\ohm}, \qquad R_2=\SI{9}{k\ohm}, \qquad C_{L,e}=\SI{10}{nF},
+\]
+on obtient :
+\[
+f_{c,\mathrm{th}}^b
+=\frac{1}{2\pi\cdot 10\,\mathrm{nF}}
+\left(
+\frac{1}{10\,\mathrm{k\Omega}}+
+\frac{1}{9\,\mathrm{k\Omega}}
+\right)
+\approx \SI{3.36}{kHz}.
+\]
+
+Cette valeur est proche de la valeur mesurée :
+\[
+f_c^b\approx \SI{3}{kHz}.
+\]
+
+L'écart relatif est :
+\[
+\varepsilon
+=\frac{|f_{c,\mathrm{th}}^b-f_c^b|}{f_{c,\mathrm{th}}^b}
+\approx
+\frac{|3.36-3.00|}{3.36}
+\approx 10.7\%.
+\]
+
+L'accord est donc satisfaisant compte tenu des tolérances des composants, de la précision de lecture à l'oscilloscope et des incertitudes liées au réglage du potentiomètre.
+
+\section{Origine de la coupure haute}
+
+La coupure haute ne s'explique pas par le modèle basse fréquence idéal du montage. Elle provient principalement des effets capacitifs parasites :
+\begin{itemize}
+  \item capacités internes du transistor, notamment les capacités grille-source, grille-drain et drain-source ;
+  \item capacité d'entrée de l'oscilloscope et de la sonde ;
+  \item capacités parasites de la plaque d'essai et des fils de connexion ;
+  \item effet Miller associé à la capacité grille-drain dans un montage inverseur.
+\end{itemize}
+
+À haute fréquence, ces capacités offrent des chemins d'impédance plus faible et réduisent progressivement le gain en tension du montage.
+
+\section{Produit gain-bande et fréquence de transition}
+
+Le produit gain-bande est défini ici par :
+\[
+PGB=G_0 f_c^h.
+\]
+
+Avec les valeurs mesurées :
+\[
+PGB=7.1\times 320\,\mathrm{kHz}
+\approx \SI{2.27}{MHz}.
+\]
+
+La fréquence de transition mesurée, c'est-à-dire la fréquence pour laquelle le gain devient égal à 1, est :
+\[
+f_t\approx \SI{1}{MHz}.
+\]
+
+On observe donc que $f_t$ est du même ordre de grandeur que le produit gain-bande, mais plus faible. Cela peut indiquer que le montage n'est pas parfaitement équivalent à un système du premier ordre sur toute la plage de fréquence. Les capacités parasites, la charge de mesure, les limitations du transistor et les incertitudes expérimentales peuvent expliquer cet écart.
+
+\section{Tableau récapitulatif}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{lll}
+\toprule
+Grandeur & Valeur & Remarque \\
+\midrule
+$V_{DD}$ & \SI{5.0}{V} & Alimentation \\
+$R_d$ & \SI{10}{k\ohm} & Résistance de drain \\
+Zone linéaire de $V_e$ & \SI{1.77}{V}--\SI{2.64}{V} & Lecture X-Y \\
+Zone linéaire de $V_s$ & \SI{5.08}{V}--\SI{0.28}{V} & Lecture X-Y \\
+$G_T$ & $-5.52$ & Pente de transfert \\
+$V_{s,0}$ & \SI{2.5}{V} & Point de polarisation \\
+$V_{e,0}$ & \SI{2.37}{V} & Après réglage de $R_2$ \\
+$R_2$ & \SI{9.0}{k\ohm} & Résistance variable \\
+$V_{e,pp}$ à vide & \SI{0.14}{V} & À \SI{10}{kHz} \\
+$V_{s,pp}$ à vide & $\approx\SI{1.0}{V}$ & À \SI{10}{kHz} \\
+$G_0$ & $7.1$ & Gain à vide \\
+$G$ & $4.1$ & Avec $R_u=\SI{10}{k\ohm}$ \\
+$R_s$ & \SI{7.3}{k\ohm} & Résistance de sortie \\
+$f_c^b$ & \SI{3}{kHz} & Coupure basse mesurée \\
+$f_c^h$ & \SI{320}{kHz} & Coupure haute mesurée \\
+$B$ & \SI{317}{kHz} & Bande passante \\
+$f_{c,\mathrm{th}}^b$ & \SI{3.36}{kHz} & Coupure basse théorique \\
+$PGB$ & \SI{2.27}{MHz} & Produit gain-bande \\
+$f_t$ & \SI{1}{MHz} & Gain unitaire \\
+\bottomrule
+\end{tabular}
+\caption{Résumé des résultats expérimentaux et calculés.}
+\end{table}
+
+\section{Conclusion}
+
+Ce TP a permis de réaliser un amplificateur à NMOS en montage source commune et d'en caractériser les principales performances. La caractéristique de transfert a montré une zone de fonctionnement approximativement linéaire, dans laquelle le montage peut être utilisé comme amplificateur inverseur. Le point de fonctionnement a été fixé à $V_{s,0}=\SI{2.5}{V}$, ce qui donne une marge de variation relativement symétrique autour du point de repos.
+
+Le gain à vide mesuré à \SI{10}{kHz} vaut environ $G_0=7.1$, tandis que le gain avec une charge de \SI{10}{k\ohm} diminue à $G=4.1$. Cette diminution met en évidence l'influence de la résistance de sortie, estimée à environ \SI{7.3}{k\ohm}. La bande passante mesurée est d'environ \SI{317}{kHz}. La fréquence de coupure basse mesurée, proche de \SI{3}{kHz}, est en bon accord avec la valeur théorique de \SI{3.36}{kHz}, obtenue à partir du condensateur de liaison d'entrée et du pont de polarisation.
+
+Enfin, le produit gain-bande est estimé à \SI{2.27}{MHz}, tandis que la fréquence de transition mesurée est proche de \SI{1}{MHz}. L'écart entre ces deux valeurs peut s'expliquer par les capacités parasites, l'effet Miller et les limites expérimentales du montage. Pour améliorer les performances, il serait possible de réduire les capacités parasites, de raccourcir les connexions, d'utiliser un transistor plus rapide ou d'ajouter un étage tampon afin de diminuer l'influence de la charge.
+
+\end{document}

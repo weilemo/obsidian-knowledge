@@ -270,7 +270,7 @@ ssh -T git@github.com
 
 ```bash
 git status
-git diff
+	git diff
 ```
 
 ### 保存修改

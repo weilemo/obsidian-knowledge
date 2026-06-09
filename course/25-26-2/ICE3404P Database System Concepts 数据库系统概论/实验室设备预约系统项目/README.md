@@ -22,6 +22,7 @@
 - `02_ER图与关系映射.md`：E-R 图（Mermaid）+ 映射关系
 - `03_中期汇报3-4分钟讲稿.md`：可直接照着讲
 - `04_文件导读与抽查问答.md`：老师抽查时的快速回答模板
+- `06_最终提交与海报说明.md`：期末提交检查清单与海报讲解结构
 - `sql/01_schema.sql`：建表、主外键、约束、索引
 - `sql/02_views.sql`：视图
 - `sql/03_triggers.sql`：触发器（核心业务规则）
@@ -33,6 +34,7 @@
 - `scripts/run_demo.sh`：一键运行演示查询
 - `scripts/run_validation.sh`：一键验证触发器拦截
 - `scripts/udf_demo.py`：可选，演示 SQLite 函数注册（UDF）
+- `poster/final_poster.html`：期末提交海报，可打印为 PDF
 
 ## 3. 快速开始（30 秒跑起来）
 

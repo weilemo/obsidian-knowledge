@@ -1,0 +1,319 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{siunitx}
+\usepackage{booktabs}
+\usepackage{geometry}
+\usepackage{float}
+\usepackage{circuitikz}
+\usepackage{hyperref}
+
+\geometry{margin=2.5cm}
+\sisetup{
+  per-mode=symbol,
+  detect-all
+}
+
+\title{TP1 -- Amplification}
+\author{Name: \underline{\hspace{5cm}} \qquad Group: \underline{\hspace{3cm}}}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Objective}
+
+The objective of this lab is to build and characterize a common-source NMOS voltage amplifier. The experiment first identifies the approximately linear operating region of the transistor, then sets a suitable DC operating point. After that, the small-signal performance of the amplifier is measured: voltage gain, output resistance, cutoff frequencies, bandwidth, and gain-bandwidth product.
+
+The fixed component values are:
+\[
+V_{DD}=\SI{5.0}{V}, \qquad R_d=\SI{10}{k\ohm}.
+\]
+
+\section{Transfer Characteristic}
+
+In the first part, the NMOS amplifier with drain resistor $R_d$ is driven by a triangular input voltage. The oscilloscope is used in X-Y mode in order to observe the transfer characteristic:
+\[
+V_s=f(V_e).
+\]
+
+The measured curve shows three operating regions. For a small input voltage, the transistor is almost off and the output voltage remains close to $V_{DD}$. For an intermediate input voltage, the transistor operates in an approximately linear region, which can be used for voltage amplification. For a larger input voltage, the transistor becomes strongly conducting and the circuit leaves the linear region.
+
+From the measurement, the approximately linear input range is:
+\[
+1.77\,\mathrm{V} \leq V_e \leq 2.64\,\mathrm{V},
+\]
+and the corresponding output voltage range is approximately:
+\[
+5.08\,\mathrm{V} \geq V_s \geq 0.28\,\mathrm{V}.
+\]
+
+The static transfer gain is estimated from the slope of the linear part:
+\[
+G_T=\frac{\Delta V_s}{\Delta V_e}
+=\frac{0.28-5.08}{2.64-1.77}
+\approx -5.52.
+\]
+
+The negative sign confirms that the common-source amplifier is an inverting amplifier: when $V_e$ increases, $V_s$ decreases.
+
+\section{Operating Point}
+
+To obtain a small-signal amplification as linear as possible, the output DC voltage is chosen at the middle of the supply range:
+\[
+V_{s,0}=\frac{V_{DD}}{2}=\SI{2.5}{V}.
+\]
+
+The function generator is removed for the DC bias adjustment. A resistor $R_1=\SI{10}{k\ohm}$ and a variable resistor $R_2$ are added in order to set the input DC voltage $V_{e,0}$. By adjusting $R_2$, the output voltage is set to:
+\[
+V_s=V_{s,0}=\SI{2.5}{V}.
+\]
+
+After adjustment, the measured values are:
+\[
+V_{e,0}\approx \SI{2.37}{V}, \qquad R_2\approx \SI{9.0}{k\ohm}.
+\]
+
+These values are consistent with the voltage divider formed by $R_1$ and $R_2$:
+\[
+V_{e,0}=V_{DD}\frac{R_2}{R_1+R_2}
+=5.0\frac{9.0}{10.0+9.0}
+\approx \SI{2.37}{V}.
+\]
+
+\section{Small-Signal Voltage Gain}
+
+After setting the DC operating point, the coupling capacitors are added:
+\[
+C_{L,e}=C_{L,s}=\SI{10}{nF}.
+\]
+
+The input signal is a small sinusoidal voltage at:
+\[
+f_0=\SI{10}{kHz}.
+\]
+
+With no load connected at the output, the input amplitude is adjusted so that the output signal remains undistorted and has a peak-to-peak voltage close to \SI{1}{V}. The measured values are:
+\[
+V_{e,pp}=\SI{0.14}{V}, \qquad V_{s,pp}\approx \SI{1.0}{V}.
+\]
+
+The open-circuit voltage gain is therefore:
+\[
+G_0=\frac{V_{s,pp}}{V_{e,pp}}
+\approx \frac{1.0}{0.14}
+\approx 7.1.
+\]
+
+Since the amplifier is inverting, the signed gain is negative if the phase is taken into account. In the following calculations, the magnitude of the gain is used.
+
+\section{Output Resistance}
+
+A load resistor is then connected at the output:
+\[
+R_u=\SI{10}{k\ohm}.
+\]
+
+The measured loaded gain is:
+\[
+G=4.1.
+\]
+
+To determine the output resistance, the output of the amplifier is modeled by a Thevenin equivalent: an ideal voltage source followed by a series resistance $R_s$.
+
+\begin{figure}[H]
+\centering
+\begin{circuitikz}[american voltages]
+  \draw
+  (0,0) to[sV,l=$G_0V_e$] (0,2)
+  to[R,l=$R_s$] (3,2)
+  to[R,l=$R_u$] (3,0)
+  -- (0,0);
+  \draw (3,2) -- (4,2);
+  \draw (3,0) -- (4,0);
+  \draw[->] (4,0.2) -- (4,1.8) node[midway,right] {$V_s$};
+\end{circuitikz}
+\caption{Output model used to determine $R_s$.}
+\end{figure}
+
+With this model, the load resistor forms a voltage divider with the output resistance:
+\[
+G=G_0\frac{R_u}{R_s+R_u}.
+\]
+
+Thus:
+\[
+R_s=R_u\left(\frac{G_0}{G}-1\right).
+\]
+
+Numerically:
+\[
+R_s=10\,\mathrm{k\Omega}
+\left(\frac{7.1}{4.1}-1\right)
+\approx \SI{7.3}{k\ohm}.
+\]
+
+\section{Frequency Response and Bandwidth}
+
+The frequency response is measured in open-circuit output conditions by varying the frequency of the input signal. The maximum gain is observed around:
+\[
+f_0=\SI{10}{kHz}.
+\]
+
+The maximum gain is:
+\[
+G_0=7.1.
+\]
+
+The \SI{-3}{dB} cutoff frequencies are defined as the frequencies for which:
+\[
+G(f)=\frac{G_0}{\sqrt{2}}.
+\]
+
+Here:
+\[
+\frac{G_0}{\sqrt{2}}=\frac{7.1}{\sqrt{2}}\approx 5.02.
+\]
+
+The measured cutoff frequencies are:
+\[
+f_c^b\approx \SI{3}{kHz}, \qquad f_c^h\approx \SI{320}{kHz}.
+\]
+
+Therefore, the \SI{-3}{dB} bandwidth is:
+\[
+B=f_c^h-f_c^b
+=320\,\mathrm{kHz}-3\,\mathrm{kHz}
+=\SI{317}{kHz}.
+\]
+
+Since $f_c^h$ is much larger than $f_c^b$, the bandwidth can also be approximated by:
+\[
+B\approx f_c^h.
+\]
+
+\section{Theoretical Low Cutoff Frequency}
+
+The low cutoff frequency is mainly caused by the input coupling capacitor $C_{L,e}$ and the equivalent resistance seen at the input. This resistance is:
+\[
+R_{\mathrm{eq}}=R_1\parallel R_2.
+\]
+
+Thus:
+\[
+f_{c,\mathrm{th}}^b
+=\frac{1}{2\pi R_{\mathrm{eq}}C_{L,e}}
+=\frac{1}{2\pi C_{L,e}}
+\left(
+\frac{1}{R_1}+\frac{1}{R_2}
+\right).
+\]
+
+Using:
+\[
+R_1=\SI{10}{k\ohm}, \qquad R_2=\SI{9}{k\ohm}, \qquad C_{L,e}=\SI{10}{nF},
+\]
+we obtain:
+\[
+f_{c,\mathrm{th}}^b
+=\frac{1}{2\pi\cdot 10\,\mathrm{nF}}
+\left(
+\frac{1}{10\,\mathrm{k\Omega}}+
+\frac{1}{9\,\mathrm{k\Omega}}
+\right)
+\approx \SI{3.36}{kHz}.
+\]
+
+This theoretical value is close to the measured value:
+\[
+f_c^b\approx \SI{3}{kHz}.
+\]
+
+The relative error is:
+\[
+\varepsilon
+=\frac{|f_{c,\mathrm{th}}^b-f_c^b|}{f_{c,\mathrm{th}}^b}
+\approx
+\frac{|3.36-3.00|}{3.36}
+\approx 10.7\%.
+\]
+
+The agreement is satisfactory, considering component tolerances, oscilloscope reading uncertainty, and the precision of the potentiometer adjustment.
+
+\section{Origin of the High Cutoff Frequency}
+
+The high cutoff frequency cannot be explained by the ideal low-frequency model of the amplifier. It is mainly due to parasitic capacitive effects, such as:
+\begin{itemize}
+  \item internal transistor capacitances, especially gate-source, gate-drain, and drain-source capacitances;
+  \item input capacitance of the oscilloscope and probe;
+  \item parasitic capacitances of the breadboard and connecting wires;
+  \item the Miller effect associated with the gate-drain capacitance in an inverting amplifier.
+\end{itemize}
+
+At high frequency, these capacitances provide lower-impedance paths and progressively reduce the voltage gain of the amplifier.
+
+\section{Gain-Bandwidth Product and Transition Frequency}
+
+The gain-bandwidth product is defined here as:
+\[
+PGB=G_0 f_c^h.
+\]
+
+With the measured values:
+\[
+PGB=7.1\times 320\,\mathrm{kHz}
+\approx \SI{2.27}{MHz}.
+\]
+
+The measured transition frequency, defined as the frequency at which the gain becomes equal to 1, is:
+\[
+f_t\approx \SI{1}{MHz}.
+\]
+
+Therefore, $f_t$ is of the same order of magnitude as the gain-bandwidth product, but it is lower. This difference may indicate that the amplifier is not a perfect single-pole system over the whole frequency range. Parasitic capacitances, measurement loading, transistor limitations, and experimental uncertainties can explain this discrepancy.
+
+\section{Summary Table}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{lll}
+\toprule
+Quantity & Value & Comment \\
+\midrule
+$V_{DD}$ & \SI{5.0}{V} & Supply voltage \\
+$R_d$ & \SI{10}{k\ohm} & Drain resistor \\
+Linear range of $V_e$ & \SI{1.77}{V}--\SI{2.64}{V} & X-Y measurement \\
+Linear range of $V_s$ & \SI{5.08}{V}--\SI{0.28}{V} & X-Y measurement \\
+$G_T$ & $-5.52$ & Transfer slope \\
+$V_{s,0}$ & \SI{2.5}{V} & Operating point \\
+$V_{e,0}$ & \SI{2.37}{V} & After adjusting $R_2$ \\
+$R_2$ & \SI{9.0}{k\ohm} & Variable resistor \\
+$V_{e,pp}$, open circuit & \SI{0.14}{V} & At \SI{10}{kHz} \\
+$V_{s,pp}$, open circuit & $\approx\SI{1.0}{V}$ & At \SI{10}{kHz} \\
+$G_0$ & $7.1$ & Open-circuit gain \\
+$G$ & $4.1$ & With $R_u=\SI{10}{k\ohm}$ \\
+$R_s$ & \SI{7.3}{k\ohm} & Output resistance \\
+$f_c^b$ & \SI{3}{kHz} & Measured low cutoff \\
+$f_c^h$ & \SI{320}{kHz} & Measured high cutoff \\
+$B$ & \SI{317}{kHz} & Bandwidth \\
+$f_{c,\mathrm{th}}^b$ & \SI{3.36}{kHz} & Theoretical low cutoff \\
+$PGB$ & \SI{2.27}{MHz} & Gain-bandwidth product \\
+$f_t$ & \SI{1}{MHz} & Unity-gain frequency \\
+\bottomrule
+\end{tabular}
+\caption{Summary of measured and calculated results.}
+\end{table}
+
+\section{Conclusion}
+
+In this lab, a common-source NMOS amplifier was built and characterized. The transfer characteristic showed an approximately linear operating region, in which the circuit can be used as an inverting voltage amplifier. The DC operating point was set to $V_{s,0}=\SI{2.5}{V}$, which provides a relatively symmetric output swing around the bias point.
+
+The open-circuit voltage gain measured at \SI{10}{kHz} is approximately $G_0=7.1$, while the gain with a \SI{10}{k\ohm} load decreases to $G=4.1$. This reduction shows the effect of the output resistance, which was estimated to be about \SI{7.3}{k\ohm}. The measured bandwidth is approximately \SI{317}{kHz}. The measured low cutoff frequency, close to \SI{3}{kHz}, agrees well with the theoretical value of \SI{3.36}{kHz}, obtained from the input coupling capacitor and the biasing network.
+
+Finally, the gain-bandwidth product is estimated to be \SI{2.27}{MHz}, while the measured transition frequency is close to \SI{1}{MHz}. The difference between these two values can be explained by parasitic capacitances, the Miller effect, and experimental limitations. The performance could be improved by reducing parasitic capacitances, shortening the connections, using a faster transistor, or adding a buffer stage to reduce the influence of the load.
+
+\end{document}

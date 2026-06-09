@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="language" content="english">
+  <title>Lab 5 | CS61C Spring 2026</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light dark">
+
+  <link rel="shortcut icon" type="image/png" href="/sp26/img/favicon.png">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css" integrity="sha512-GQGU0fMMi238uA+a/bdWJfpUGKUkBdgfFdgBm72SUQ6BeyWjoY/ton0tEjH+OSH9iP4Dfh+7HM0I9f5eR0L/4w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/js/bootstrap.min.js" integrity="sha512-OvBgP9A2JBgiRad/mM36mkzXSXaJE9BEIENnVEmeZdITvwT09xnxLtT4twkCa8m/loMbPHsvPl0T8lRGVBwjlQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/instant.page/5.1.0/instantpage.min.js" integrity="sha512-1+qUtKoh9XZW7j+6LhRMAyOrgSQKenQ4mluTR+cvxXjP1Z54RxZuzstR/H9kgPXQsVB8IW7DMDFUJpzLjvhGSQ==" crossorigin="anonymous"></script>
+
+
+  <link rel="stylesheet" href="/sp26/css/main.css?h=f8bd781ba155b1b368c870416f8523be84e7ec2bcec8d335573a0c95c849e327" />
+  <script defer type="text/javascript" src="/sp26/js/main.js?h=ad997e2a23022756f6ea00b8b4e23a4ee1a56495d9f493dcb7b75cae0dc3465f"></script>
+
+  <!-- block for FICT/FaRT -->
+  <script type="text/javascript" src="/sp26/js/main-sync.js?h=a5a9607bf30db01764e4c92a4d4832318d20ec7d3ec29af4ddf72b7ddcb13817"></script>
+  <script>initDarkToggle();</script>
+
+  
+
+
+
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.17.0/tocbot.min.js" integrity="sha512-DJhUMo5TIBb3fFziiE+3OJG+j7ky+GxScxHdLADCXskEpc/AKQsbsorIYmGFJFaJvDIyP65rJNhnCTytfYAdUw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark mb-4">
+  <div class="container">
+    <a class="navbar-brand" href="/sp26/">
+      <img class="d-inline-block me-2 rounded" height="48" width="48" src="/sp26/img/icon-small.png" alt="outline of square computer chip with cs61c label" />
+      <span class="align-middle">CS61C Spring 2026</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle Navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="/sp26/calendar/">Calendar</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/sp26/exam/">Exam</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/sp26/policies/">Policies</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://edstem.org/us/courses/93340/">Ed</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarLinksDropdownToggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Quick Links</a>
+          <ul class="dropdown-menu p-0" aria-labelledby="navbarLinksDropdownToggle">
+            <li><a class="dropdown-item nav-link" href="https://flextensions.berkeley.edu/">Request an Extension</a></li>
+            <li><a class="dropdown-item nav-link" href="https://oh.cs61c.org/">OH Queue</a></li>
+            <li><a class="dropdown-item nav-link" href="https://venus.cs61c.org/">Venus</a></li>
+            <li><a class="dropdown-item nav-link" href="https://calendar.app.google/usQAgWHiiLPBH7hi6">Student Support Meeting</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarLinksDropdownToggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Resources</a>
+          <ul class="dropdown-menu p-0" aria-labelledby="navbarLinksDropdownToggle">
+            <li><a class="dropdown-item nav-link" href="/sp26/resources/common-errors/">Common Errors</a></li>
+            <li><a class="dropdown-item nav-link" href="https://notes.cs61c.org/">Course Notes</a></li>
+            <li><a class="dropdown-item nav-link" href="/sp26/pdfs/resources/reference-card.pdf">Reference Card</a></li>
+            <li><a class="dropdown-item nav-link" href="/sp26/resources/">Resource Index</a></li>
+            <li><a class="dropdown-item nav-link" href="/sp26/resources/exams/">Past Exams</a></li>
+            <li><a class="dropdown-item nav-link" href="https://inst.eecs.berkeley.edu/~cs61c/archives.html">Past Semesters</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/sp26/staff/">Staff</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+  <main class="mb-4">
+    <section class="section">
+      <div class="container">
+        
+
+		
+
+        
+<div class="row spec">
+  
+    <nav id="toc-wrapper" class="col-md-3 d-print-none sticky-md-top nav-wrapper" aria-label="table of contents">
+      
+  <ul class="nav flex-column">
+    
+      <li class="nav-item">
+        <a class="nav-link" href="/sp26/labs/lab05/#setup">Setup</a>
+        
+          
+  <ul class="nav flex-column">
+    
+      <li class="nav-item">
+        <a class="nav-link" href="/sp26/labs/lab05/#possible-setup-errors">Possible Setup Errors</a>
+        
+      </li>
+    
+  </ul>
+
+        
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-link" href="/sp26/labs/lab05/#exercise-1-introduction">Exercise 1: Introduction</a>
+        
+          
+  <ul class="nav flex-column">
+    
+      <li class="nav-item">
+        <a class="nav-link" href="/sp26/labs/lab05/#building-our-circuit">Building Our Circuit</a>
+        
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-link" href="/sp26/labs/lab05/#list-of-wire-colors-and-values">List of Wire Colors and Values</a>
+        
+      </li>
+    
+  </ul>
+
+        
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-link" href="/sp26/labs/lab05/#exercise-2-sub-circuits">Exercise 2: Sub-Circuits</a>
+        
+          
+  <ul class="nav flex-column">
+    
+      <li class="nav-item">
+        <a class="nav-link" href="/sp26/labs/lab05/#testing">Testing</a>
+        
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-link" href="/sp26/labs/lab05/#checkpoint">Checkpoint</a>
+        
+      </li>
+    
+  </ul>
+
+        
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-link" href="/sp26/labs/lab05/#exercise-3-storing-state">Exercise 3: Storing State</a>
+        
+          
+  <ul class="nav flex-column">
+    
+      <li class="nav-item">
+        <a class="nav-link" href="/sp26/labs/lab05/#checkpoint-1">Checkpoint</a>
+        
+      </li>
+    
+  </ul>
+
+        
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-link" href="/sp26/labs/lab05/#advanced-logisim-features">Advanced Logisim Features</a>
+        
+          
+  <ul class="nav flex-column">
+    
+      <li class="nav-item">
+        <a class="nav-link" href="/sp26/labs/lab05/#splitters">Splitters</a>
+        
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-link" href="/sp26/labs/lab05/#tunnels">Tunnels</a>
+        
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-link" href="/sp26/labs/lab05/#extenders">Extenders</a>
+        
+      </li>
+    
+  </ul>
+
+        
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-link" href="/sp26/labs/lab05/#exercise-4-rotate-right">Exercise 4: Rotate Right</a>
+        
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-link" href="/sp26/labs/lab05/#exercise-5-reflection-and-feedback-form">Exercise 5: Reflection and Feedback Form</a>
+        
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-link" href="/sp26/labs/lab05/#exercise-6-optional-mid-semester-feedback-form">Exercise 6: [Optional] Mid-Semester Feedback Form</a>
+        
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-link" href="/sp26/labs/lab05/#submission">Submission</a>
+        
+      </li>
+    
+  </ul>
+
+    </nav>
+  
+  <div id="toc-content-wrapper"  class="content col-md-9" >
+    <h1 class="title">Lab 5: Logisim</h1>
+    
+      <p class="subtitle">Deadline: Thursday, March 12, 11:59:59 PM PT</p>
+    
+    
+    <p>This lab introduces Logisim - an educational tool for designing and simulating digital logic circuits. It is critical prep for Project 3.</p>
+<p><a href="https://docs.google.com/presentation/d/1ShCYj2EdtpaU0Tuau6bCSISYyEKb3LY31FFXdSahSTg/edit?usp=drive_web&amp;ouid=108835853953890482662">Lab Slides</a></p>
+<hr />
+<h2 id="setup">Setup</h2>
+<div  class="alert alert-warning">
+  <p>You must complete this lab on your local machine. See <a href="/sp26/labs/lab00/">Lab 0</a> if you need to set up your local machine again.</p>
+
+</div>
+<p>In your <code>labs</code> directory on your local machine, pull any changes you may have made in past labs:</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">git</span></span><span class="z-meta z-function-call z-arguments z-shell"> pull origin main</span>
+</span></code></pre>
+<p>Still in your <code>labs</code> directory on your local machine, pull the files for this lab with:</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">git</span></span><span class="z-meta z-function-call z-arguments z-shell"> pull starter main</span>
+</span></code></pre>
+<p>If you run into any <code>git</code> errors, please check out the <a href="/sp26/resources/common-errors/">common errors</a> page.</p>
+<p>Still in your labs directory, run the following command to download the newest version Logisim:</p>
+<pre class="z-code"><code><span class="z-text z-plain">bash tools/download_tools.sh
+</span></code></pre>
+<p>All the work in this lab will be done using <strong>Logisim Evolution</strong>.</p>
+<p>Some important warnings before you begin:</p>
+<ul>
+<li>Logisim is a GUI program, so it can't easily be used in a headless environment (WSL, SSH, etc.). Please run it in a <strong>local environment</strong> with a GUI, Java 9+, and Python 3.6+. If your local system is macOS or Linux you're probably all set. If you're on Windows, use <code>Git Bash</code>, which runs on Windows with GUI support.</li>
+<li>Please use the version of Logisim that we distribute, since it is different from other versions on the internet (bugfixes and course-specific stuff)</li>
+<li>Don't move the staff-provided input/output pins; your circuit can't be tested properly if the pins move. If your circuit doesn't pass the tests and you think it is correct, check that your circuit fits in the corresponding harness in <code>tests/ex#_test.circ</code></li>
+<li>Logisim doesn't auto-save your work. Remember to save (and commit) frequently as you work!</li>
+</ul>
+<h3 id="possible-setup-errors">Possible Setup Errors</h3>
+<ul>
+<li>&quot;Permission Denied&quot; trying to run Python on Windows 10
+<ol>
+<li>Search for &quot;app execution alias&quot; in the Windows search prompt. Click on &quot;Manage app execution aliases&quot; which is a part of &quot;System Setting&quot;</li>
+<li>Disable the store versions of Python by toggling the corresponding executables off.<details>
+     <summary>Screenshot</summary>
+     <img src="setup-error-app-exec-aliases.png" />
+ </details>
+</li>
+</ol>
+</li>
+<li><code>java.lang.UnsupportedClassVersionError</code><pre data-lang="txt" class="language-txt z-code"><code class="language-txt" data-lang="txt"><span class="z-text z-plain">Exception in thread &quot;main&quot; java.lang.UnsupportedClassVersionError: com/cburch/logisim/Main has been compiled by a more recent version of the Java Runtime (class file version 60.0), this version of the Java Runtime only recognizes class file versions up to 52.0
+</span></code></pre>
+You need to update to Java 16+. Follow the <a href="/sp26/labs/lab00/">setup instructions from Lab 0</a>.</li>
+</ul>
+<hr />
+<h2 id="exercise-1-introduction">Exercise 1: Introduction</h2>
+<p>Like Venus, you can open Logisim from inside the <code>lab05</code> folder with,</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">java</span></span><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>jar</span> ../tools/logisim-evolution.jar <span class="z-comment z-line z-number-sign z-shell"><span class="z-punctuation z-definition z-comment z-begin z-shell">#</span></span><span class="z-comment z-line z-number-sign z-shell"> If in a different folder, use the corresponding relative path</span><span class="z-comment z-line z-number-sign z-shell">
+</span></span></span></code></pre>
+<p>After a short startup sequence, a slightly ancient-looking window should appear. If not, check for errors in your terminal.</p>
+<p>We'll begin by creating a very simple circuit just to get the feel for placing gates and wires. Before you start, take note of a <strong>useful feature: the zoom function!</strong> It's in the bottom left corner, and will make your life much easier for the next few weeks. Zoom Zoom Zoom.</p>
+<p><img src="/sp26/labs/lab05/interface-emphasize-zoom.png" alt="Zoom... Zoom... ENHANCE! Zoom feature is available in Logisim at the bottom left corner." /></p>
+<h3 id="building-our-circuit">Building Our Circuit</h3>
+<ol>
+<li>
+<p><img src="/sp26/labs/lab05/icon-and.png" alt="AND gate icon" /> Start by clicking the <code>AND</code> gate button. This will cause the shadow of an <code>AND</code> gate to follow your cursor around. Click once within the main schematic window to place an <code>AND</code> gate.</p>
+</li>
+<li>
+<p><img src="/sp26/labs/lab05/icon-pin-input.png" alt="Input pin icon" /> Click the <code>Input Pin</code> button. Now, place two input pins somewhere to the left of your <code>AND</code> gate.</p>
+</li>
+<li>
+<p><img src="/sp26/labs/lab05/icon-pin-output.png" alt="Output pin icon" /> Click the <code>Output Pin</code> button. Then place an output pin somewhere to the right of your <code>AND</code> gate. Your schematic should look something like this at this point:</p>
+<p><img src="/sp26/labs/lab05/circuit-and-disconnected.png" alt="A circuit in Logisim. It has two input pins on the left, each has value &quot;0&quot; in binary. In the center there is an AND gate. To its right, there is an output pin with value &quot;U&quot;. They are all disconnected." /></p>
+</li>
+<li>
+<p><img src="/sp26/labs/lab05/icon-select.png" alt="Select tool icon" /> Click the <code>Select tool</code> button. Click and drag to connect the 2 input pins to the 2 inputs on the left side of the <code>AND</code> gate. You can only draw vertical and horizontal wires. Just draw a wire horizontally, release the mouse button, then click and drag starting from the end of the wire to continue vertically. Repeat the same procedure to connect the output on the right side of the <code>AND</code> Gate to the output pin. After completing these steps your schematic should look similar to this:</p>
+<p><img src="/sp26/labs/lab05/circuit-and-connected.png" alt="A circuit in Logisim. It has two input pins on the left, each has value &quot;0&quot; in binary. They are connected to an AND gate in the center. Connected to its right, there is an output pin with value &quot;0&quot; in binary." /></p>
+</li>
+<li>
+<p><img src="/sp26/labs/lab05/icon-poke.png" alt="Poke tool icon" /> Finally, the <code>Poke</code> tool will toggle the values of the pins when you click on them. If you use the <code>Poke</code> tool on a wire, it will display the value on the wire. Select the <code>Poke</code> tool, try clicking on the input pins in your schematic, and observe what happens. Does the output match with what you think an <code>AND</code> Gate should do? Now, try poking a wire directly. The current value on that wire should pop up; this will be very useful later when you build more complex circuits.</p>
+</li>
+<li>
+<p>Now, delete the wires, and try wiring each input pin to the <em>other</em> pin on the <code>AND</code> gate, in such a way that the wires cross over. An extreme example:</p>
+<p><img src="/sp26/labs/lab05/circuit-and-crossover.png" alt="This Logisim circuit shows two input pins with binary value “0” and “1” connected to an AND gate by intertwined crossover wires. The output from the AND gate is split and connected to two output pins with binary value “0”, with the text “wow we’re identical!” next to them." title="- Gred and Forge" /></p>
+<p>If you're creating a wire and drag it <strong>over</strong> another wire without stopping, the wires won't connect. If you're creating a wire and stop dragging while <strong>on top</strong> of another wire, a junction (big circle) will be created, and the wires will connect. Make sure to pay attention to junctions when you're designing your circuits!</p>
+</li>
+</ol>
+<h3 id="list-of-wire-colors-and-values">List of Wire Colors and Values</h3>
+<p>Please take a look at this list. It may help to try re-creating each color on your own.</p>
+<p><img src="/sp26/labs/lab05/circuit-wire-errors.png" alt="This circuit shows multiple input-output pin groups. In the first group, an input pin with binary value “0” is connected to an output pin with binary value “0” via a dark green wire. In the second group, an input pin with binary value &quot;1&quot; is connected to an output pin with binary value &quot;1&quot; via a bright green wire. In the third group, an input pin with binary &quot;0&quot; and an input pin with binary value &quot;1&quot; are connected to the same wire in red, and the red wire is connected to an output pin with binary value &quot;E&quot;. In the fourth group, an input pin with binary value &quot;0&quot; is disconnected with an output pin with binary value &quot;U&quot;. The wire on the output pin side is blue. The fifth group has three input pins. Two 2-bit input pins are wired to the MUX data bits. A slightly hidden orange wire behind the MUX connecting the 2-bit lower data line to the 1-bit select line, making the lower data and select wires orange as well. The MUX is connected to a two bit output pin with value &quot;UU&quot; via a black wire." /></p>
+<table><thead><tr><th>Color</th><th>Meaning</th></tr></thead><tbody>
+<tr><td>Dark green</td><td>1-bit wire has a value of 0</td></tr>
+<tr><td>Bright green</td><td>1-bit wire has a value of 1</td></tr>
+<tr><td>Black</td><td>Multi-bit wire (many components have bit width attributes which can be configured in the attributes menu on the bottom left)</td></tr>
+<tr><td>Red (values with <code>EEEE</code>)</td><td>The wire has multiple values on it (in this case, a <code>0</code> and <code>1</code> from the 2 inputs). Also, remember that a big circle appears at wire junctions.</td></tr>
+<tr><td>Blue (values with <code>UUUU</code>)</td><td>The wire is floating (i.e. has no known value)</td></tr>
+<tr><td>Orange</td><td>The wire is connected to components that have different bit widths. A simple example is a 1-bit input pin connected to a 2-bit output pin. In the shown example, there's a slightly hidden wire behind the <code>MUX</code> connecting the 2-bit lower data line to the 1-bit select line. Watch out for these!</td></tr>
+</tbody></table>
+<div  class="alert alert-info">
+  <p><strong>Accessibility Note</strong>: In case you have a disability and find it difficult to identify these colors, please feel free to use a more convenient set of colors. To do this, go to <code>File -&gt; Preferences -&gt; Simulation Tab</code>. Please inform course staff of this change when you show circuits during OH or on Ed as we often use colors as a debugging tool.</p>
+
+</div>
+<h2 id="exercise-2-sub-circuits">Exercise 2: Sub-Circuits</h2>
+<p>Just as C programs can contain helper functions, a schematic can contain helper subcircuits. In this part of the lab, we will create several subcircuits to demonstrate their use.</p>
+<p>Note: Logisim Evolution generally doesn't permit names with spaces or symbols, names starting with numbers, or names that conflict with keywords (e.g. <code>NAND</code>).</p>
+<ol>
+<li>
+<p>Open up the Exercise 2 schematic (<code>File -&gt; Open -&gt; lab05/ex2.circ</code>).</p>
+</li>
+<li>
+<p>Open up the <code>AND2</code> sample subcircuit by double-clicking <code>AND2</code> in the circuit selector on the left side.</p>
+<p><img src="/sp26/labs/lab05/interface-circuit-selector.png" alt="" /></p>
+<p>Note the <code>2</code> at the end; because there is a component called <code>AND</code>, we can't call it <code>AND</code>.
+We've created a demo circuit for your reference. It has 2 1-bit input pins, <code>A</code> and <code>B</code>, and sends the result of <code>A &amp; B</code> to the <code>RESULT</code> output pin. This should look very similar to the practice circuit you just made.</p>
+</li>
+<li>
+<p>Now, open up the <code>NAND2</code> subcircuit. It's time to make your own circuit! Fill in this circuit <strong>without</strong> using the built-in <code>NAND</code> gate from the Gates library on the left (i.e. only use the <code>AND</code>, <code>OR</code>, and <code>NOT</code> gates; they're available as little icons in the toolbar at the top of the window, or in the Gates library in the circuit selector). When you're done, similarly fill in the <code>NOR2</code>, <code>XOR2</code>, <code>MUX2</code> (2-to-1 MUX), and <code>MUX4</code> (4-to-1 MUX). Please note that <code>NAND</code>, <code>NOR</code>, <code>XOR</code>, and <code>MUX</code> already exist in logisim. This exercise is meant to help you understand how to use subcircuits.</p>
+<ul>
+<li>Please do not change the names of the subcircuits or create new ones, or your circuit may not work properly</li>
+<li>Don't use any built-in gates other than <code>AND</code>, <code>OR</code>, and <code>NOT</code>. However, once you've built a subcircuit, you may (and are encouraged to) <strong>use it to build others</strong>. You can do this by single-clicking a subcircuit in the circuit selector, and placing it like you did for the <code>AND</code>/<code>NOT</code>/<code>OR</code> gates</li>
+<li>It helps to write out a truth table for each circuit. You might also find it useful to review the lecture slides on how to build these gates</li>
+<li>This <a href="https://inst.eecs.berkeley.edu/%7Ecs61c/sp21/resources-pdfs/blocks.pdf">combinational logic blocks handout</a> may be useful for your MUX implementation</li>
+<li>For the <code>4-to-1 MUX</code>, <code>SEL0</code> and <code>SEL1</code> correspond to the 0th and 1st bits of the 2-bit selector, respectively. Make sure not to switch them!</li>
+</ul>
+</li>
+</ol>
+<h3 id="testing">Testing</h3>
+<p>Open a terminal session and go to the <code>lab05</code> folder. We've provided tests for each exercise, which you can run with <code>python3 test.py</code>. For each test, your circuit is run in a test harness circuit (<code>tests/ex2-test.circ</code>), and its output is compared against the reference output for that test (<code>tests/out/ex2-test.ref</code>). In the output file, each column corresponds to an input/output pin on the main circuit, and each row shows a set of inputs and the corresponding outputs the circuit produced. If your circuit output (<code>tests/out/ex2-test.out</code>) is different, you can check it against the reference output file; the <code>diff</code> command may help.</p>
+<ul>
+<li>Note that the output files are &quot;formatted&quot; by adding tab characters (<code>\t</code>) between each value, and they look best when tabs are displayed as 8 spaces wide. Values and column headers that are 8+ characters might mess up the alignment, so watch out for those!</li>
+<li>Don't modify the reference output files, or local tests might produce incorrect results</li>
+<li>You shouldn't need to edit the test harness circuits for this lab. However, it might be useful to take a look; we'll be doing similar things in the next lab and project 3!</li>
+</ul>
+<h3 id="checkpoint">Checkpoint</h3>
+<p>At this point, make sure that you are comfortable with the Logisim environment, creating sub-circuits, and re-using such circuits in other circuits.</p>
+<h2 id="exercise-3-storing-state">Exercise 3: Storing State</h2>
+<p>Let's implement a circuit that increments a value repeatedly. The difference between this circuit and the circuits you've built for lab so far is that it will <strong>store</strong> this value as a <strong>state</strong> in a <strong>register</strong>.</p>
+<ol>
+<li>
+<p>Open up the Exercise 3 schematic (<code>File -&gt; Open -&gt; lab05/ex3.circ</code>) and go to the empty <code>AddMachine</code> circuit.</p>
+<ol>
+<li>Remember to <strong>save often</strong>, and <strong>avoid moving or editing the provided input/output pins</strong>.</li>
+</ol>
+</li>
+<li>
+<p>Select the <code>Adder</code> subcircuit from the <code>Arithmetic</code> library (circuit selector on the left side) and place the adder into your <code>AddMachine</code> subcircuit.</p>
+<img src="interface-library-emphasize-adder.png" class="w-25" />
+</li>
+<li>
+<p>Select the <code>Register</code> from the <code>Memory</code> library and place one register into your subcircuit. Below is an image illustrating the parts of a register.</p>
+<p><img src="/sp26/labs/lab05/diagram-register.png" alt="" /></p>
+</li>
+<li>
+<p>Wire up the <code>clk</code> input pin to the clock pin on your register. It's generally better to have all components in a circuit use the same clock so that everything is in sync. In this case, the testing harness uses a clock for its register, so it passes that clock signal in through the <code>clk</code> pin here for your circuit's registers.  In the future, if you're working on a circuit that doesn't have an existing clock signal, feel free to make your own by using a new <code>Clock</code> from the <code>Wiring</code> library.</p>
+</li>
+<li>
+<p>Connect the output of the adder to the input of the register, and the output of the register to the input of the adder.</p>
+<ul>
+<li>You may get an &quot;Incompatible widths&quot; error when you try to connect components. This means that your wire is trying to connect two pins with different bit widths. If you click on a component with the <code>Selection</code> tool (mouse pointer icon on the toolbar at the top), you will notice that there is a <code>Data Bits</code> property in the bottom left field of the window. This value determines the number of bits the component's input and output have. Make sure that both the adder and register have a data bit width of <code>8</code>, and the &quot;Incompatible widths&quot; error should be resolved.</li>
+</ul>
+</li>
+<li>
+<p>Wire an 8-bit constant with a value of <code>1</code> to the second input of the adder. You can find the <code>Constant</code> circuit element in the <code>Wiring</code> library. To change it's value to <code>1</code>, simply type <code>1</code> for the <code>Value</code> property and hit <code>Enter</code>. You should now see the value as <code>0x1</code> (Logisim automatically converts the decimal value you enter to hex).</p>
+</li>
+<li>
+<p>Connect the two output pins to your circuit so that you may monitor what comes out of the adder and the register. The output of the adder should be connected to <code>ADD_OUT</code> and the output of the register to <code>REG_OUT</code>. Thus, by the end, your circuit should look similar to:</p>
+<p><img src="/sp26/labs/lab05/circuit-add-machine.png" alt="" /></p>
+</li>
+<li>
+<p>Now, open up the test circuit for this exercise (<code>lab05/tests/ex3-test.circ</code>). At the top left, we have a small circuit (like your <code>AddMachine</code>) keeping track of the current cycle. Below that, you should see your <code>AddMachine</code> circuit hooked up to the clock and some output pins.</p>
+</li>
+<li>
+<p>Tick your circuit once by going to <code>Simulate -&gt; Tick Half Cycle</code> (<code>Command/Control + T</code>). The outputs from your <code>AddMachine</code> should have gone up! Additionally, the clock should now be bright green.</p>
+<p>This is <strong>extremely</strong> important for project 3, so please make sure you know how to tick the clock and poke wires.</p>
+<p><img src="/sp26/labs/lab05/half-tick.png" alt="" /></p>
+<p>If you <code>Tick Half Cycle</code> again, you'll notice that the clock goes back to dark green, but the numbers don't change. This is because the registers, by default, are rising-edge triggered (i.e. triggered when going from a low clock signal to a high signal).</p>
+<p>If you're not particularly interested in seeing changes for half cycles, you can also use <code>Simulate -&gt; Tick Full Cycle</code> (<code>F2</code>).</p>
+<p><img src="/sp26/labs/lab05/full-tick.png" alt="" /></p>
+</li>
+<li>
+<p>Ticking the circuit manually can be pretty tiring. Good news: Logisim can tick your circuit for you! Go to <code>Simulate -&gt; Ticks Enabled/Enable Clock Ticks</code> (<code>Command/Control + K</code>). Your circuit should now be counting up, hands-free!</p>
+<p><img src="/sp26/labs/lab05/ticks-enabled.gif" alt="" /></p>
+<p>If you want to run your circuit faster, you can change the tick frequency in <code>Simulate -&gt; Tick Frequency</code>. To stop, click <code>Ticks Enabled//Enable Clock Ticks</code> (<code>Command/Control + K</code>) again. If you want to reset the circuit, <code>Simulate -&gt; Reset Simulation</code> (<code>Command/Control + R</code>).</p>
+</li>
+<li>
+<p>When you're done, try running the provided tests (<a href="/sp26/labs/lab05/#testing">using <code>python3 test.py</code></a>).</p>
+</li>
+</ol>
+<h3 id="checkpoint-1">Checkpoint</h3>
+<p>At this point, make sure that you are comfortable with designing and simulating simple digital logic circuits in Logisim environment that use a mix of <em>combinational logic</em> and <em>state elements</em> (registers).</p>
+<hr />
+<h2 id="advanced-logisim-features">Advanced Logisim Features</h2>
+<p>Here are three Logisim features that should both save you a lot of time and make your circuits look much cleaner.</p>
+<h3 id="splitters">Splitters</h3>
+<p>Splitters allow you to take a multi-bit value and split it up into smaller parts, or (despite the name) combine multiple values that are one or more bits into a single value. Here, we split the 4-bit binary number <code>1100</code> into <code>11</code> and <code>00</code>, swap their positions, and combine them with <code>0</code> to create the final 5 bit number <code>00110</code>:</p>
+<p><img src="/sp26/labs/lab05/circuit-splitter-demo.png" alt="" /></p>
+<p>Click on a splitter (using the <code>Select</code> tool) to get its attributes in the sidebar (lower left). You can configure attributes like the number of arms on your splitter and the bits present on each arm. For the circuit above, the left and right splitters' attributes looks like this:</p>
+<div class="d-inline-block wrap w-50">
+  <p><img src="interface-attributes-splitter-demo-left.png" alt="" /><img src="interface-attributes-splitter-demo-right.png" alt="" /></p>
+
+</div>
+<p>Notice that there's an attribute called <code>Facing</code>. You can use this to rotate your splitter. In the above example, the splitter on the right is facing <code>West</code> while the splitter on the left is facing <code>East</code>.</p>
+<p>If you see an error wire that is orange, this means that your bit width in does not match your bit width out. Make sure that if you're connecting two components with a wire, you correctly set the bit width in that component's menu.</p>
+<div class="d-inline-block wrap w-50">
+  <p><img src="circuit-splitter-error-width.png" alt="" /></p>
+
+</div>
+<h3 id="tunnels">Tunnels</h3>
+<p>A tunnel allows you draw an &quot;invisible wire&quot; to bind two points together. Tunnels are grouped by case-sensitive labels give to a wire. They are used to connect wires like so:</p>
+<div class="d-inline-block wrap w-50">
+  <p><img src="circuit-tunnel-demo-working.png" alt="" /></p>
+
+</div>
+<p>which effectively is:</p>
+<div class="d-inline-block wrap w-50">
+  <p><img src="circuit-tunnel-demo-working-revealed.png" alt="" /></p>
+
+</div>
+<p>Some care should be taken as to which wires are connected with tunnels to which other wires, such as in this case:</p>
+<div class="d-inline-block wrap w-50">
+  <p><img src="circuit-tunnel-demo-error.png" alt="" /></p>
+
+</div>
+<p>which effectively is:</p>
+<div class="d-inline-block wrap w-50">
+  <p><img src="circuit-tunnel-demo-error-revealed.png" alt="" /></p>
+
+</div>
+<p>We <em>strongly</em> recommend you use tunnels with Logisim, because they make your circuits look much cleaner (less wiring spaghetti), which means easier debugging.</p>
+<h3 id="extenders">Extenders</h3>
+<p>When changing the width of a wire, you should use a bit extender for clarity. For example, consider the following implementation of zero-extending an 8-bit wire into a 16-bit wire:</p>
+<div class="d-inline-block wrap w-50">
+  <p><img src="circuit-extender-demo-wider.png" alt="" /></p>
+
+</div>
+<p>Compared to the splitter, the extender is easier to understand at a glance. This becomes especially helpful when working with complex circuits.</p>
+<p>Additionally, consider the case of throwing out bits. Despite its name, an extender can also perform this operation:</p>
+<div class="d-inline-block wrap w-50">
+  <p><img src="circuit-extender-demo-narrower.png" alt="" /></p>
+
+</div>
+<p>While the splitter is more minimalistic, it's also slightly harder to read.</p>
+<hr />
+<h2 id="exercise-4-rotate-right">Exercise 4: Rotate Right</h2>
+<p>With your knowledge of splitters and your knowledge and experience with multiplexers, you are ready to implement a non-trivial combinational logic block: <code>RotRight</code>, which stands for &quot;Rotate Right&quot;. The idea is that <code>RotRight</code> will &quot;rotate&quot; the bit pattern of input <code>INPUT0</code> to the right by <code>AMOUNT</code> bits. So, if <code>INPUT0</code> were <code>0b1000000000000101</code> and <code>AMOUNT</code> were <code>0b0011</code> (<code>3</code> in decimal), the output of the block would be <code>0b1011000000000000</code>. Notice that the rightmost <code>3</code> bits were rotated off the right end of the value and back onto the left end. This can be represented as a bitwise operation by <code>R = A &gt;&gt; B | A &lt;&lt; (16 - B)</code>.</p>
+<p>Implement a subcircuit named <code>RotRight</code> with the following inputs:</p>
+<ul>
+<li><code>INPUT0</code> (16-bit), the 16-bit input to be rotated</li>
+<li><code>AMOUNT</code> (4-bit), the rotation amount (why 4 bits?)</li>
+</ul>
+<p>You can find the starter subcircuit in <code>ex4.circ</code>.  Remember to <strong>save often</strong>, and <strong>avoid moving or editing the provided input/output pins</strong>.</p>
+<p>The output should be <code>INPUT0</code> rotated right by <code>AMOUNT</code> bit positions, as outlined above. You are <strong>NOT</strong> allowed to use Logisim shifters in your solution, though all other combinational logic (MUXes, constants, gates, etc.) is allowed. Logisim's built-in MUXes (find them under the <code>Plexers</code> menu) might be especially helpful. Your solution shouldn't involve a clock or any clocked elements, like registers.</p>
+<ul>
+<li>We have provided you with the skeleton for <code>rot1</code>, <code>rot2</code>, <code>rot4</code>, and <code>rot8</code> which will rotate the input by 1, 2, 4, and 8 bits respectively. You should implement these subcircuits and use them in your implementation of <code>RotRight</code>.</li>
+</ul>
+<details >
+  <summary>Hint</summary>
+  <p>You can rotate by any number from 0-15 using the provided subcircuits. For example, to rotate by 9, you can rotate by 8 and then rotate by 1.</p>
+
+</details>
+<p>When you're done, try running the provided tests.</p>
+<h2 id="exercise-5-reflection-and-feedback-form">Exercise 5: Reflection and Feedback Form</h2>
+<p>We are working to improve the class every week - please fill out <a href="https://docs.google.com/forms/d/e/1FAIpQLSehGRUSB4tG994DH8MlXG2ar7-Q_XBXjLWSbov6R4qd5KAJHg/viewform?usp=dialog">this survey</a> to tell us about your experience in discussion and lab so far!</p>
+<h2 id="exercise-6-optional-mid-semester-feedback-form">Exercise 6: [Optional] Mid-Semester Feedback Form</h2>
+<p>We are also conducting a <a href="https://docs.google.com/forms/d/e/1FAIpQLSfBHqmCIu56oWhcj5oIE5s36FIlPXeDIz46JzYo_pUBKoCrPw/viewform?usp=dialog">mid semester survey</a> to tell us about your experience in the course as a whole. Please fill out the survey for <strong>extra credit</strong>!</p>
+<hr />
+<h2 id="submission">Submission</h2>
+<p>Save, commit, and push your work, then submit to the <strong>Lab 5</strong> assignment on Gradescope.</p>
+
+  </div>
+</div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer>
+  <div class="container border-top pt-4 mb-5">
+    <div class="row">
+      <div class="col">
+        <div id="dark-toggle-wrapper" class="d-none">
+          <div class="form-check form-switch">
+            <input id="inputDarkToggle" class="form-check-input" type="checkbox">
+            <label class="form-check-label" for="inputDarkToggle">
+              Dark Mode
+              <a id="buttonDarkToggleReset" class="d-none" href="javascript:void(0);">(reset)</a>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  
+<script>
+  
+
+  
+    document.addEventListener("DOMContentLoaded", function() {
+      initToC();
+    });
+  
+</script>
+
+</body>
+
+</html>
